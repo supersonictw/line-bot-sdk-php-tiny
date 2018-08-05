@@ -372,25 +372,13 @@ class LINEAPI {
     }
 
     public function downloadMessageObject($msgid, $path = "./") {
-        $header = array(
-            'Authorization: Bearer ' . $this->channelAccessToken,
-        );
-
-        $context = stream_context_create(array(
-            "http" => array(
-                "method" => "GET",
-                "header" => implode("\r\n", $header),
-            ),
-        ));
-
-        $response = file_get_contents($this->host."/v2/bot/message/".$msgid."/content", false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
-            http_response_code(500);
-            error_log("Request failed: " . $response);
-        }else {
+        $response = $this->getMessageObject($msgid);
+        if ($response != null) {
             $file = fopen($path.$msgid, "wb");
             fwrite($file, $response);
             fclose($file);
+        }else{
+            return false;
         }
     }
 
