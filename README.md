@@ -1,8 +1,8 @@
 line-bot-sdk-php-tiny
 ==
-[![License](https://img.shields.io/badge/license-Apache--2.0-FF3333.svg)](LICENSE) [![Line](https://img.shields.io/badge/lineapi-v2-00DD77.svg)](https://developers.line.me) ![Version](https://img.shields.io/badge/version-2.1-00BBFF.svg) ![PHP](https://img.shields.io/badge/php-5.x-B94FFF.svg) 
+[![License](https://img.shields.io/badge/license-Apache--2.0-FF3333.svg)](LICENSE) [![Line](https://img.shields.io/badge/lineapi-v2-00DD77.svg)](https://developers.line.me) [![Version](https://img.shields.io/badge/version-2.2-00BBFF.svg)](https://github.com/supersonictw/line-bot-sdk-php-tiny) [![PHP](https://img.shields.io/badge/php-5.x-B94FFF.svg)](https://php.net)
 
-[![LINE](http://lineofficial.blogimg.jp/tw/imgs/2/2/22f62401.png)](https://line.me)
+[![LINE](https://lineofficial.blogimg.jp/tw/imgs/2/2/22f62401.png)](https://line.me)
 
 A simple SDK  for the LINE Messaging API for PHP.
 
@@ -11,7 +11,7 @@ Description
 
 The origin version is [line-bot-sdk-tiny](https://github.com/line/line-bot-sdk-php/tree/master/line-bot-sdk-tiny) by LINE Corp.
 
-The version of LINE Messaging API by [SuperSonic](https://github.com/supersonictw) as Third Party Update to support more LINE features.
+The version of LINE Messaging API by [SuperSonic](https://randychen.tk) as Third Party Update to support more LINE features.
 
 The API has only a "api.php" file to include into your LINEBOT.
 

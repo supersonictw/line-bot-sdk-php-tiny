@@ -28,7 +28,7 @@
     Third Party Update by SuperSonic
    ====================================
         Copyright(c) 2018 Randy Chen.   http://randychen.tk/
-    Version: 2.1
+    Version: 2.2
     More Information: 
         https://github.com/supersonictw/line-bot-sdk-php-tiny
 */
@@ -350,6 +350,50 @@ class LINEAPI {
         }
     }
 
+    public function getMessageObject($msgid) {
+        $header = array(
+            'Authorization: Bearer ' . $this->channelAccessToken,
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "GET",
+                "header" => implode("\r\n", $header),
+            ),
+        ));
+
+        $response = file_get_contents($this->host."/v2/bot/message/".$msgid."/content", false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }else {
+            return $response;
+        }
+    }
+
+    public function downloadMessageObject($msgid, $path = "./") {
+        $header = array(
+            'Authorization: Bearer ' . $this->channelAccessToken,
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "GET",
+                "header" => implode("\r\n", $header),
+            ),
+        ));
+
+        $response = file_get_contents($this->host."/v2/bot/message/".$msgid."/content", false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }else {
+            $file = fopen($path.$msgid, "wb");
+            fwrite($file, $response);
+            fclose($file);
+        }
+    }
+
     private function sign($body) {
         $hash = hash_hmac('sha256', $body, $this->channelSecret, true);
         $signature = base64_encode($hash);
@@ -447,4 +491,15 @@ class LINEMSG {
      }
 }
 
+class LINEMSG_Imagemap {
+
+}
+
+class LINEMSG_Template {
+
+}
+
+class LINEMSG_FlexContainer {
+
+}
 ?>
