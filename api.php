@@ -74,9 +74,8 @@ class LINEAPI {
 
         $context = stream_context_create(array(
             "http" => array(
-                "method" => "POST",
+                "method" => "GET",
                 "header" => implode("\r\n", $header),
-                "content" => "[]",
             ),
         ));
 
@@ -96,9 +95,8 @@ class LINEAPI {
 
         $context = stream_context_create(array(
             "http" => array(
-                "method" => "POST",
+                "method" => "GET",
                 "header" => implode("\r\n", $header),
-                "content" => "[]",
             ),
         ));
 
@@ -111,20 +109,25 @@ class LINEAPI {
         }
     }
 
-    public function getGroupMemberIds($groupId) {
+    public function getGroupMemberIds($groupId, $continuationToken = null) {
+        if ($continuationToken != null) {
+            $next = "?start=".$continuationToken;
+        }else{
+            $next = "";
+        }
+
         $header = array(
             'Authorization: Bearer ' . $this->channelAccessToken,
         );
 
         $context = stream_context_create(array(
             "http" => array(
-                "method" => "POST",
+                "method" => "GET",
                 "header" => implode("\r\n", $header),
-                "content" => "[]",
             ),
         ));
 
-        $response = file_get_contents($this->host.'/v2/bot/group/'.urlencode($groupId).'/member/ids', false, $context);
+        $response = file_get_contents($this->host.'/v2/bot/group/'.urlencode($groupId).'/member/ids'.$next, false, $context);
         if (strpos($http_response_header[0], '200') === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
@@ -160,9 +163,8 @@ class LINEAPI {
 
         $context = stream_context_create(array(
             "http" => array(
-                "method" => "POST",
+                "method" => "GET",
                 "header" => implode("\r\n", $header),
-                "content" => "[]",
             ),
         ));
 
@@ -175,20 +177,25 @@ class LINEAPI {
         }
     }
 
-    public function getRoomMemberIds($roomId) {
+    public function getRoomMemberIds($roomId, $continuationToken = null) {
+        if ($continuationToken != null) {
+            $next = "?start=".$continuationToken;
+        }else{
+            $next = "";
+        }
+
         $header = array(
             'Authorization: Bearer ' . $this->channelAccessToken,
         );
 
         $context = stream_context_create(array(
             "http" => array(
-                "method" => "POST",
+                "method" => "GET",
                 "header" => implode("\r\n", $header),
-                "content" => "[]",
             ),
         ));
 
-        $response = file_get_contents($this->host.'/v2/bot/room/'.urlencode($roomId).'/member/ids', false, $context);
+        $response = file_get_contents($this->host.'/v2/bot/room/'.urlencode($roomId).'/member/ids'.$next, false, $context);
         if (strpos($http_response_header[0], '200') === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
