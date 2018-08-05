@@ -127,7 +127,7 @@ class LINEAPI {
             ),
         ));
 
-        $response = file_get_contents($this->host.'/v2/bot/group/'.urlencode($groupId).'/member/ids'.$next, false, $context);
+        $response = file_get_contents($this->host.'/v2/bot/group/'.urlencode($groupId).'/members/ids'.$next, false, $context);
         if (strpos($http_response_header[0], '200') === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
@@ -195,7 +195,7 @@ class LINEAPI {
             ),
         ));
 
-        $response = file_get_contents($this->host.'/v2/bot/room/'.urlencode($roomId).'/member/ids'.$next, false, $context);
+        $response = file_get_contents($this->host.'/v2/bot/room/'.urlencode($roomId).'/members/ids'.$next, false, $context);
         if (strpos($http_response_header[0], '200') === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
