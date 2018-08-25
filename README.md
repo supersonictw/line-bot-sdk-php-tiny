@@ -27,7 +27,10 @@ The API uses "file_get_contents()" as HttpClient.
 
 So it maybe will be crashed by SELinux.
 
-Please turn off it, or using full version API.
+There are some solutions:
++ Disable SELinux
++ Add SELinux Policy
++ To use [line-bot-sdk-php](https://github.com/line/line-bot-sdk-php)
 
 Example
 --

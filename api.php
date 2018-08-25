@@ -67,6 +67,79 @@ class LINEAPI {
         $this->channelSecret = $channelSecret;
     }
 
+    public function issueChannelAccessToken(){
+        $header = array(
+            "Content-Type: application/x-www-form-urlencoded"
+        );
+
+        $content = array(
+            "grant_type=client_credentials",
+            "client_id=" . $channelId,
+            "client_secret=" .  $channelSecret
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "POST",
+                "header" => implode("\r\n", $header),
+                "content" => implode("\r\n", $content),
+            ),
+        ));
+
+        $response = file_get_contents($this->host.'/v2/oauth/accessToken', false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }else {
+            $data = json_decode($response);
+            $this->channelAccessToken = $data->access_token;
+            return $data;
+        }
+    }
+
+    public function revokeChannelAccessToken(){
+        $header = array(
+            "Content-Type: application/x-www-form-urlencoded"
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "POST",
+                "header" => implode("\r\n", $header),
+                "content" => "access_token=" . $this->channelAccessToken,
+            ),
+        ));
+
+        $response = file_get_contents($this->host.'/v2/oauth/accessToken', false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }
+    }
+
+    public function issueUserLinkToken($userId){
+        $header = array(
+            "Content-Type: application/json",
+            'Authorization: Bearer ' . $this->channelAccessToken,
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "POST",
+                "header" => implode("\r\n", $header),
+                "content" => "[]",
+            ),
+        ));
+
+        $response = file_get_contents($this->host.'/v2/bot/user/'.urlencode($userId).'/linkToken', false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }else {
+            return json_decode($response);
+        }
+    }
+
     public function getProfile($userId) {
         $header = array(
             'Authorization: Bearer ' . $this->channelAccessToken,
@@ -84,7 +157,7 @@ class LINEAPI {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }else {
-            return $response;
+            return json_decode($response);
         }
     }
 
@@ -105,13 +178,13 @@ class LINEAPI {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }else {
-            return $response;
+            return json_decode($response);
         }
     }
 
     public function getGroupMemberIds($groupId, $continuationToken = null) {
         if ($continuationToken != null) {
-            $next = "?start=".$continuationToken;
+            $next = "?start=" . $continuationToken;
         }else{
             $next = "";
         }
@@ -127,17 +200,18 @@ class LINEAPI {
             ),
         ));
 
-        $response = file_get_contents($this->host.'/v2/bot/group/'.urlencode($groupId).'/members/ids'.$next, false, $context);
+        $response = file_get_contents($this->host.'/v2/bot/group/'.urlencode($groupId).'/members/ids'.urlencode($next), false, $context);
         if (strpos($http_response_header[0], '200') === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }else {
-            return $response;
+            return json_decode($response);
         }
     }
 
     public function leaveGroup($groupId) {
         $header = array(
+            "Content-Type: application/json",
             'Authorization: Bearer ' . $this->channelAccessToken,
         );
 
@@ -173,13 +247,13 @@ class LINEAPI {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }else {
-            return $response;
+            return json_decode($response);
         }
     }
 
     public function getRoomMemberIds($roomId, $continuationToken = null) {
         if ($continuationToken != null) {
-            $next = "?start=".$continuationToken;
+            $next = "?start=" . $continuationToken;
         }else{
             $next = "";
         }
@@ -195,17 +269,18 @@ class LINEAPI {
             ),
         ));
 
-        $response = file_get_contents($this->host.'/v2/bot/room/'.urlencode($roomId).'/members/ids'.$next, false, $context);
+        $response = file_get_contents($this->host.'/v2/bot/room/'.urlencode($roomId).'/members/ids' .urlencode($next), false, $context);
         if (strpos($http_response_header[0], '200') === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }else {
-            return $response;
+            return json_decode($response);
         }
     }
 
     public function leaveRoom($roomId) {
         $header = array(
+            "Content-Type: application/json",
             'Authorization: Bearer ' . $this->channelAccessToken,
         );
 
@@ -362,7 +437,7 @@ class LINEAPI {
             ),
         ));
 
-        $response = file_get_contents($this->host."/v2/bot/message/".$msgid."/content", false, $context);
+        $response = file_get_contents($this->host.'/v2/bot/message/' .urlencode($msgid).'/content', false, $context);
         if (strpos($http_response_header[0], '200') === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
@@ -374,7 +449,7 @@ class LINEAPI {
     public function downloadMessageObject($msgid, $path = "./") {
         $response = $this->getMessageObject($msgid);
         if ($response != null) {
-            $file = fopen($path.$msgid, "wb");
+            $file = fopen($path . $msgid, "wb");
             fwrite($file, $response);
             fclose($file);
         }else{
