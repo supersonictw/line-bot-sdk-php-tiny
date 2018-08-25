@@ -449,13 +449,24 @@ class LINEMSG {
      }
 
      public  function Imagemap($baseUrl, $altText, $width, $height, $action) {
+        if (isset($action["type"])){
+            $actions = array($action); 
+        }else{
+            $actions = $action;
+        }
+        if ($width == 0 and $height == 0){
+            list($width, $height) = getimagesize($baseUrl);
+        }
+        $baseSize = array(
+            "width" => $width,
+            "height" => $height,
+        );
         $MsgObject = array(
                "type" => "imagemap",
                "baseUrl" => $baseUrl,
                "altText" => $altText,
-               "baseSize.width" => $width,
-               "baseSize.height " => $height,
-               "actions" => $action
+               "baseSize" => $baseSize,
+               "actions" => $actions
         );
          return $MsgObject;
      }
@@ -463,13 +474,13 @@ class LINEMSG {
      public  function Template($altText, $template) {
         $MsgObject = array(
                "type" => "template",
-               "altText" => $url,
+               "altText" => $altText,
                "template" => $template
         );
          return $MsgObject;
      }
 
-     public  function Flex($url, $contents = null) {
+     public  function Flex($altText, $contents) {
         $MsgObject = array(
                "type" => "flex",
                "altText" => $altText,
@@ -480,11 +491,79 @@ class LINEMSG {
 }
 
 class LINEMSG_Imagemap {
+    public function action($type, $url_or_text, $area, $label = null) {
+        if($type == "link"){
+            $dataType = "linkUri";
+        }elseif($type == "message"){
+            $dataType = "text";
+        }else{
+            return null;
+        }
+        $object = array(
+            "type" => $type,
+            "label" => $label,
+            $dataType => $url_or_text,
+            "area" => $area
+        );
+        return $object;
+    }
 
+    public function actionArea($x, $y, $width, $height){
+        $object = array(
+            "x" => $x,
+            "y" => $y,
+            "width" => $width,
+            "height" => $height
+        );
+        return $object;
+    }
 }
 
 class LINEMSG_Template {
+    public  function __construct($template){
+        switch($template){
+            case "buttons":
+                $this->object = array(
+                    "type" => "buttons",
+                    "thumbnailImageUrl" => null,
+                    "imageAspectRatio" => null,
+                    "imageSize" => null,
+                    "imageBackgroundColor" => null,
+                    "title" => null,
+                    "text" => null,
+                    "defaultAction" => null,
+                    "actions" => null
+                );
+                break;
+            case "confirm":
+                $this->object = array(
+                    "type" => "confirm",
+                    "text" => null,
+                    "actions" => null
+                );
+                break;
+            case "carousel":
+                $this->object = array(
+                    "type" => "carousel",
+                    "columns" => null,
+                    "imageAspectRatio" => null,
+                    "imageSize" => null,
+                );
+                break;
+            case "image_carousel":
+                $this->object = array(
+                    "type" => "image_carousel",
+                    "columns" => null,
+                );
+                break;
+            default:
+                return null;
+        }
+    }
 
+    public function out(){
+        return $this->object;
+    }
 }
 
 class LINEMSG_FlexContainer {
