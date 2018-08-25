@@ -67,22 +67,24 @@ class LINEAPI {
         $this->channelSecret = $channelSecret;
     }
 
-    public function issueChannelAccessToken(){
+    public function issueChannelAccessToken($channelId, $channelSecret){
         $header = array(
             "Content-Type: application/x-www-form-urlencoded"
         );
 
-        $content = array(
-            "grant_type=client_credentials",
-            "client_id=" . $channelId,
-            "client_secret=" .  $channelSecret
+        $content =  http_build_query(
+            array(
+                "grant_type" => "client_credentials",
+                "client_id" => $channelId,
+                "client_secret" =>  $channelSecret
+            )
         );
 
         $context = stream_context_create(array(
             "http" => array(
                 "method" => "POST",
                 "header" => implode("\r\n", $header),
-                "content" => implode("\r\n", $content),
+                "content" => $content,
             ),
         ));
 
@@ -102,15 +104,22 @@ class LINEAPI {
             "Content-Type: application/x-www-form-urlencoded"
         );
 
+
+        $content =  http_build_query(
+            array(
+                "access_token" =>  $this->channelAccessToken
+            )
+        );
+
         $context = stream_context_create(array(
             "http" => array(
                 "method" => "POST",
                 "header" => implode("\r\n", $header),
-                "content" => "access_token=" . $this->channelAccessToken,
+                "content" => $content,
             ),
         ));
 
-        $response = file_get_contents($this->host.'/v2/oauth/accessToken', false, $context);
+        $response = file_get_contents($this->host.'/v2/oauth/revoke', false, $context);
         if (strpos($http_response_header[0], '200') === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
