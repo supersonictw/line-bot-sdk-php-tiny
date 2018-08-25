@@ -28,7 +28,7 @@
     Third Party Update by SuperSonic
    ====================================
         Copyright(c) 2018 Randy Chen.   http://randychen.tk/
-    Version: 2.1
+    Version: 2.2
     More Information: 
         https://github.com/supersonictw/line-bot-sdk-php-tiny
 */
@@ -67,6 +67,88 @@ class LINEAPI {
         $this->channelSecret = $channelSecret;
     }
 
+    public function issueChannelAccessToken($channelId, $channelSecret){
+        $header = array(
+            "Content-Type: application/x-www-form-urlencoded"
+        );
+
+        $content =  http_build_query(
+            array(
+                "grant_type" => "client_credentials",
+                "client_id" => $channelId,
+                "client_secret" =>  $channelSecret
+            )
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "POST",
+                "header" => implode("\r\n", $header),
+                "content" => $content,
+            ),
+        ));
+
+        $response = file_get_contents($this->host.'/v2/oauth/accessToken', false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }else {
+            $data = json_decode($response);
+            $this->channelAccessToken = $data->access_token;
+            return $data;
+        }
+    }
+
+    public function revokeChannelAccessToken(){
+        $header = array(
+            "Content-Type: application/x-www-form-urlencoded"
+        );
+
+
+        $content =  http_build_query(
+            array(
+                "access_token" =>  $this->channelAccessToken
+            )
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "POST",
+                "header" => implode("\r\n", $header),
+                "content" => $content,
+            ),
+        ));
+
+        $response = file_get_contents($this->host.'/v2/oauth/revoke', false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }
+    }
+
+    public function issueUserLinkToken($userId){
+        $header = array(
+            "Content-Type: application/json",
+            'Authorization: Bearer ' . $this->channelAccessToken,
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "POST",
+                "header" => implode("\r\n", $header),
+                "content" => "[]",
+            ),
+        ));
+
+        $response = file_get_contents($this->host.'/v2/bot/user/'.urlencode($userId).'/linkToken', false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }else {
+            return json_decode($response);
+        }
+    }
+
     public function getProfile($userId) {
         $header = array(
             'Authorization: Bearer ' . $this->channelAccessToken,
@@ -84,7 +166,7 @@ class LINEAPI {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }else {
-            return $response;
+            return json_decode($response);
         }
     }
 
@@ -105,13 +187,13 @@ class LINEAPI {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }else {
-            return $response;
+            return json_decode($response);
         }
     }
 
     public function getGroupMemberIds($groupId, $continuationToken = null) {
         if ($continuationToken != null) {
-            $next = "?start=".$continuationToken;
+            $next = "?start=" . $continuationToken;
         }else{
             $next = "";
         }
@@ -127,17 +209,18 @@ class LINEAPI {
             ),
         ));
 
-        $response = file_get_contents($this->host.'/v2/bot/group/'.urlencode($groupId).'/members/ids'.$next, false, $context);
+        $response = file_get_contents($this->host.'/v2/bot/group/'.urlencode($groupId).'/members/ids'.urlencode($next), false, $context);
         if (strpos($http_response_header[0], '200') === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }else {
-            return $response;
+            return json_decode($response);
         }
     }
 
     public function leaveGroup($groupId) {
         $header = array(
+            "Content-Type: application/json",
             'Authorization: Bearer ' . $this->channelAccessToken,
         );
 
@@ -173,13 +256,13 @@ class LINEAPI {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }else {
-            return $response;
+            return json_decode($response);
         }
     }
 
     public function getRoomMemberIds($roomId, $continuationToken = null) {
         if ($continuationToken != null) {
-            $next = "?start=".$continuationToken;
+            $next = "?start=" . $continuationToken;
         }else{
             $next = "";
         }
@@ -195,17 +278,18 @@ class LINEAPI {
             ),
         ));
 
-        $response = file_get_contents($this->host.'/v2/bot/room/'.urlencode($roomId).'/members/ids'.$next, false, $context);
+        $response = file_get_contents($this->host.'/v2/bot/room/'.urlencode($roomId).'/members/ids' .urlencode($next), false, $context);
         if (strpos($http_response_header[0], '200') === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }else {
-            return $response;
+            return json_decode($response);
         }
     }
 
     public function leaveRoom($roomId) {
         $header = array(
+            "Content-Type: application/json",
             'Authorization: Bearer ' . $this->channelAccessToken,
         );
 
@@ -350,6 +434,38 @@ class LINEAPI {
         }
     }
 
+    public function getMessageObject($msgid) {
+        $header = array(
+            'Authorization: Bearer ' . $this->channelAccessToken,
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "GET",
+                "header" => implode("\r\n", $header),
+            ),
+        ));
+
+        $response = file_get_contents($this->host.'/v2/bot/message/' .urlencode($msgid).'/content', false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }else {
+            return $response;
+        }
+    }
+
+    public function downloadMessageObject($msgid, $path = "./") {
+        $response = $this->getMessageObject($msgid);
+        if ($response != null) {
+            $file = fopen($path . $msgid, "wb");
+            fwrite($file, $response);
+            fclose($file);
+        }else{
+            return false;
+        }
+    }
+
     private function sign($body) {
         $hash = hash_hmac('sha256', $body, $this->channelSecret, true);
         $signature = base64_encode($hash);
@@ -417,13 +533,24 @@ class LINEMSG {
      }
 
      public  function Imagemap($baseUrl, $altText, $width, $height, $action) {
+        if (isset($action["type"])){
+            $actions = array($action); 
+        }else{
+            $actions = $action;
+        }
+        if ($width == 0 and $height == 0){
+            list($width, $height) = getimagesize($baseUrl);
+        }
+        $baseSize = array(
+            "width" => $width,
+            "height" => $height,
+        );
         $MsgObject = array(
                "type" => "imagemap",
                "baseUrl" => $baseUrl,
                "altText" => $altText,
-               "baseSize.width" => $width,
-               "baseSize.height " => $height,
-               "actions" => $action
+               "baseSize" => $baseSize,
+               "actions" => $actions
         );
          return $MsgObject;
      }
@@ -431,13 +558,13 @@ class LINEMSG {
      public  function Template($altText, $template) {
         $MsgObject = array(
                "type" => "template",
-               "altText" => $url,
+               "altText" => $altText,
                "template" => $template
         );
          return $MsgObject;
      }
 
-     public  function Flex($url, $contents = null) {
+     public  function Flex($altText, $contents) {
         $MsgObject = array(
                "type" => "flex",
                "altText" => $altText,
@@ -447,4 +574,131 @@ class LINEMSG {
      }
 }
 
+class LINEMSG_Imagemap {
+    public function action($type, $url_or_text, $area, $label = null) {
+        if($type == "link"){
+            $dataType = "linkUri";
+        }elseif($type == "message"){
+            $dataType = "text";
+        }else{
+            return null;
+        }
+        $object = array(
+            "type" => $type,
+            "label" => $label,
+            $dataType => $url_or_text,
+            "area" => $area
+        );
+        return $object;
+    }
+
+    public function actionArea($x, $y, $width, $height){
+        $object = array(
+            "x" => $x,
+            "y" => $y,
+            "width" => $width,
+            "height" => $height
+        );
+        return $object;
+    }
+}
+
+class LINEMSG_Template {
+    public  function __construct($template){
+        switch($template){
+            case "buttons":
+                $this->object = array(
+                    "type" => "buttons",
+                    "thumbnailImageUrl" => null,
+                    "imageAspectRatio" => null,
+                    "imageSize" => null,
+                    "imageBackgroundColor" => null,
+                    "title" => null,
+                    "text" => null,
+                    "defaultAction" => null,
+                    "actions" => null
+                );
+                break;
+            case "confirm":
+                $this->object = array(
+                    "type" => "confirm",
+                    "text" => null,
+                    "actions" => null
+                );
+                break;
+            case "carousel":
+                $this->object = array(
+                    "type" => "carousel",
+                    "columns" => null,
+                    "imageAspectRatio" => null,
+                    "imageSize" => null,
+                );
+                break;
+            case "image_carousel":
+                $this->object = array(
+                    "type" => "image_carousel",
+                    "columns" => null,
+                );
+                break;
+            default:
+                return null;
+        }
+    }
+
+    public function set($var, $value = null){
+        if(gettype($var) == "array"){
+            $keys = array_keys($this->object);
+            foreach($var as $num => $run){
+                $this->set($keys[$num+1], $run);
+            }
+        }else{
+            $this->object[$var] = $value;
+        }
+    }
+
+    public function out(){
+        return $this->object;
+    }
+}
+
+class LINEMSG_FlexContainer {
+    public  function __construct($container){
+        switch($container){
+            case "bubble":
+                $this->object = array(
+                    "type" => "bubble",
+                    "direction" => null,
+                    "header" => null,
+                    "hero" => null,
+                    "body" => null,
+                    "footer" => null,
+                    "styles" => null
+                );
+                break;
+            case "carousel":
+                $this->object = array(
+                    "type" => "carousel",
+                    "contents" => null,
+                );
+                break;
+            default:
+                return null;
+        }
+    }
+
+    public function set($var, $value = null){
+        if(gettype($var) == "array"){
+            $keys = array_keys($this->object);
+            foreach($var as $num => $run){
+                $this->set($keys[$num+1], $run);
+            }
+        }else{
+            $this->object[$var] = $value;
+        }
+    }
+
+    public function out(){
+        return $this->object;
+    }
+}
 ?>
