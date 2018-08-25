@@ -561,6 +561,17 @@ class LINEMSG_Template {
         }
     }
 
+    public function set($var, $value = null){
+        if(gettype($var) == "array"){
+            $keys = array_keys($this->object);
+            foreach($var as $num => $run){
+                $this->set($keys[$num+1], $run);
+            }
+        }else{
+            $this->object[$var] = $value;
+        }
+    }
+
     public function out(){
         return $this->object;
     }
