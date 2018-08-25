@@ -578,6 +578,43 @@ class LINEMSG_Template {
 }
 
 class LINEMSG_FlexContainer {
+    public  function __construct($container){
+        switch($container){
+            case "bubble":
+                $this->object = array(
+                    "type" => "bubble",
+                    "direction" => null,
+                    "header" => null,
+                    "hero" => null,
+                    "body" => null,
+                    "footer" => null,
+                    "styles" => null
+                );
+                break;
+            case "carousel":
+                $this->object = array(
+                    "type" => "carousel",
+                    "contents" => null,
+                );
+                break;
+            default:
+                return null;
+        }
+    }
 
+    public function set($var, $value = null){
+        if(gettype($var) == "array"){
+            $keys = array_keys($this->object);
+            foreach($var as $num => $run){
+                $this->set($keys[$num+1], $run);
+            }
+        }else{
+            $this->object[$var] = $value;
+        }
+    }
+
+    public function out(){
+        return $this->object;
+    }
 }
 ?>
