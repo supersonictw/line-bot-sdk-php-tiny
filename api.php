@@ -767,6 +767,11 @@ class LINEMSG {
      }
 
      public  function Flex($altText, $contents) {
+        foreach($contents as $num => $var){
+            if($var == null){
+                unset($contents[$num]);
+            }
+        }
         $MsgObject = array(
                "type" => "flex",
                "altText" => $altText,
