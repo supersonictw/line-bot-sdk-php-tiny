@@ -664,6 +664,13 @@ class LINEAPI {
 }
 
 class LINEMSG {
+    public  function QuickReply($actions) {
+       $MsgObject = array(
+              "items" =>   $actions,
+       );
+        return array("quickReply" => $MsgObject);
+    }
+
    public  function Text($msgText) {
         $MsgObject = array(
                "type" => "text",
@@ -762,6 +769,98 @@ class LINEMSG {
         );
          return $MsgObject;
      }
+}
+
+class LINEMSG_QuickReply {
+    public  function __construct(){
+        $this->object = array(
+            "type" => "action",
+            "action" => array()
+        );
+    }
+
+    public function add($action){
+        if(gettype($action) == "array"){
+            $this->object["action"] = $action;
+        }else{
+            push_array($this->object["action"], $action);
+        }
+    }
+
+    public function out(){
+        return $this->object;
+    }   
+
+    public function actions($type){
+        switch($type){
+            case "postback":
+                $this->actions = array(
+                    "type" => "postback",
+                    "label" => null,
+                    "data" => null,
+                    "text" => null
+                );
+                break;
+            case "message":
+                $this->actions = array(
+                    "type" => "message",
+                    "label" => null,
+                    "text" => null
+                );
+                break;
+            case "uri":
+                $this->actions = array(
+                    "type" => "uri",
+                    "label" => null,
+                    "uri" => null
+                );
+                break;
+            case "datetimepicker":
+                $this->actions = array(
+                    "type" => "datetimepicker",
+                    "label" => null,
+                    "data" => null,
+                    "mode" => null,
+                    "initial" => null,
+                    "max" => null,
+                    "min" => null
+                );
+                break;
+            case "camera":
+                $this->actions = array(
+                    "type" => "camera",
+                    "label" => null
+                );
+                break;
+            case "cameraRoll":
+                $this->actions = array(
+                    "type" => "cameraRoll",
+                    "label" => null
+                );
+                break;
+            case "location":
+                $this->actions = array(
+                    "type" => "location",
+                    "label" => null
+                );
+                break;
+        }
+    }
+
+    public function actions_set($var, $value = null){
+        if(gettype($var) == "array"){
+            $keys = array_keys($this->actions);
+            foreach($var as $num => $run){
+                $this->set($keys[$num+1], $run);
+            }
+        }else{
+            $this->actions[$var] = $value;
+        }
+    }
+
+    public function actions_out(){
+        return $this->actions;
+    }   
 }
 
 class LINEMSG_Imagemap {
