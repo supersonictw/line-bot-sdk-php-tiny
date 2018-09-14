@@ -753,6 +753,11 @@ class LINEMSG {
      }
      
      public  function Template($altText, $template) {
+        foreach($template as $num => $var){
+            if($var == null){
+                unset($template[$num]);
+            }
+        }
         $MsgObject = array(
                "type" => "template",
                "altText" => $altText,
