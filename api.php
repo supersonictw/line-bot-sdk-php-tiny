@@ -466,6 +466,196 @@ class LINEAPI {
         }
     }
 
+    public function getRichMenuList() {
+        $header = array(
+            'Authorization: Bearer ' . $this->channelAccessToken,
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "GET",
+                "header" => implode("\r\n", $header),
+            ),
+        ));
+
+        $response = file_get_contents($this->host.'/v2/bot/richmenu/list', false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }else {
+            return json_decode($response);
+        }
+    }
+
+    public function getRichMenu($richMenuId) {
+        $header = array(
+            'Authorization: Bearer ' . $this->channelAccessToken,
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "GET",
+                "header" => implode("\r\n", $header),
+            ),
+        ));
+
+        $response = file_get_contents($this->host.'/v2/bot/richmenu/'.urlencode($richMenuId), false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }else {
+            return json_decode($response);
+        }
+    }
+
+    public function createRichMenu($content) {
+        $header = array(
+            "Content-Type: application/json",
+            'Authorization: Bearer ' . $this->channelAccessToken,
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "POST",
+                "header" => implode("\r\n", $header),
+                "content" => json_encode($content),
+            ),
+        ));
+
+        $response = file_get_contents($this->host.'/v2/bot/richmenu', false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }else {
+            return json_decode($response);
+        }
+    }
+
+    public function deleteRichMenu($richMenuId) {
+        $header = array(
+            'Authorization: Bearer ' . $this->channelAccessToken,
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "DELETE",
+                "header" => implode("\r\n", $header),
+            ),
+        ));
+
+        $response = file_get_contents($this->host.'/v2/bot/richmenu/'.urlencode($richMenuId), false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }
+    }
+
+    public function getRichMenuIdOfUser($userId) {
+        $header = array(
+            'Authorization: Bearer ' . $this->channelAccessToken,
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "GET",
+                "header" => implode("\r\n", $header),
+            ),
+        ));
+
+        $response = file_get_contents($this->host.'/v2/bot/user/'.urlencode($userId).'/richmenu', false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }else {
+            return json_decode($response);
+        }
+    }
+    
+    public function linkRichMenuToUser($userId, $richMenuId) {
+        $header = array(
+            "Content-Type: application/json",
+            'Authorization: Bearer ' . $this->channelAccessToken,
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "POST",
+                "header" => implode("\r\n", $header),
+                "content" => "[]",
+            ),
+        ));
+
+        $response = file_get_contents($this->host.'/v2/bot/user/'.urlencode($userId).'/richmenu/'.urlencode($richMenuId), false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }
+    }
+
+    public function unlinkRichMenuFromUser($userId, $richMenuId) {
+        $header = array(
+            'Authorization: Bearer ' . $this->channelAccessToken,
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "DELETE",
+                "header" => implode("\r\n", $header),
+            ),
+        ));
+
+        $response = file_get_contents($this->host.'/v2/bot/user/'.urlencode($userId).'/richmenu/'.urlencode($richMenuId), false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }
+    }
+
+    //public function uploadRichMenuImage($path)
+    # I think it is not a good way to upload file with "file_get_contents"
+    /*    #Uncommit This to use the function for upload File with cURL
+    public function uploadRichMenuImage($path) {
+        $ch = curl_init($this->host.'/v2/bot/richmenu/'.$richMenuId.'/content');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+            'file_input' => $path,
+        ));
+        curl_exec($ch);
+    }
+    */
+
+    public function getRichMenuImage($richMenuId) {
+        $header = array(
+            'Authorization: Bearer ' . $this->channelAccessToken,
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "GET",
+                "header" => implode("\r\n", $header),
+            ),
+        ));
+
+        $response = file_get_contents($this->host.'/v2/bot/richmenu/' .urlencode($richMenuId).'/content', false, $context);
+        if (strpos($http_response_header[0], '200') === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        }else {
+            return $response;
+        }
+    }
+
+    public function downloadRichMenuImage($richMenuId, $path = "./") {
+        $response = $this->getRichMenuImage($richMenuId);
+        if ($response != null) {
+            $file = fopen($path . $richMenuId, "wb");
+            fwrite($file, $response);
+            fclose($file);
+        }else{
+            return false;
+        }
+    }
+
     private function sign($body) {
         $hash = hash_hmac('sha256', $body, $this->channelSecret, true);
         $signature = base64_encode($hash);
