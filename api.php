@@ -28,7 +28,7 @@
     Third Party Update by SuperSonic
    ====================================
         Copyright(c) 2018 Randy Chen.   http://randychen.tk/
-    Version: 2.2
+    Version: 2.3
     More Information: 
         https://github.com/supersonictw/line-bot-sdk-php-tiny
 */
@@ -673,8 +673,17 @@ class LINEMSG {
 
    public  function Text($msgText) {
         $MsgObject = array(
-               "type" => "text",
+                "type" => "text",
                 "text" => $msgText
+        );
+        return $MsgObject;
+    }
+
+    public  function Sticker($packageId, $stickerId) {
+        $MsgObject = array(
+                "type" => "sticker",
+                "packageId" => $packageId,
+                "stickerId" => $stickerId
         );
         return $MsgObject;
     }
@@ -687,7 +696,7 @@ class LINEMSG {
         }
 
         $MsgObject = array(
-               "type" => "image",
+                "type" => "image",
                 "originalContentUrl" => $url,
                 "previewImageUrl" => $preview
         );
@@ -861,7 +870,7 @@ class LINEMSG_QuickReply {
         if(gettype($var) == "array"){
             $keys = array_keys($this->actions);
             foreach($var as $num => $run){
-                $this->set($keys[$num+1], $run);
+                $this->actions_set($keys[$num+1], $run);
             }
         }else{
             $this->actions[$var] = $value;
@@ -1019,7 +1028,7 @@ class LINEMSG_Template {
         if(gettype($var) == "array"){
             $keys = array_keys($this->actions);
             foreach($var as $num => $run){
-                $this->set($keys[$num+1], $run);
+                $this->actions_set($keys[$num+1], $run);
             }
         }else{
             $this->actions[$var] = $value;
