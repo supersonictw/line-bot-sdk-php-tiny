@@ -1,6 +1,6 @@
 line-bot-sdk-php-tiny
 ==
-[![License](https://img.shields.io/badge/license-Apache--2.0-FF3333.svg)](LICENSE) [![Line](https://img.shields.io/badge/lineapi-v2-00DD77.svg)](https://developers.line.me) [![Version](https://img.shields.io/badge/version-2.2-00BBFF.svg)](https://github.com/supersonictw/line-bot-sdk-php-tiny) [![PHP](https://img.shields.io/badge/php-5.x-B94FFF.svg)](https://php.net)
+[![License](https://img.shields.io/badge/license-Apache--2.0-FF3333.svg)](LICENSE) [![Line](https://img.shields.io/badge/lineapi-v2-00DD77.svg)](https://developers.line.me) [![Version](https://img.shields.io/badge/version-2.3-00BBFF.svg)](https://github.com/supersonictw/line-bot-sdk-php-tiny) [![PHP](https://img.shields.io/badge/php-5.x-B94FFF.svg)](https://php.net)
 
 [![LINE](https://lineofficial.blogimg.jp/tw/imgs/2/2/22f62401.png)](https://line.me)
 
@@ -35,7 +35,7 @@ There are some solutions:
 Example
 --
 
-See [document](https://supersonictw.github.io/line-bot-sdk-php-tiny/) or [example](./example/).
+Try to read [examples](./examples/).
 
 When running examples, make sure that you have set your Channel access token and Channel secret.
 
