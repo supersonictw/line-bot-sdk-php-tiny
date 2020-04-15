@@ -25,12 +25,10 @@
  */
 
 /*
-    Third Party Update by SuperSonic
-   ====================================
-        Copyright(c) 2018 Randy Chen.   http://randychen.tk/
-    Version: 2.3
-    More Information: 
-        https://github.com/supersonictw/line-bot-sdk-php-tiny
+    Third Party Update by SuperSonic v2.4
+        https://git.io/Jfvrg
+
+    (c) 2020 SuperSonic (https://github.com/supersonictw)
 */
 
 if (!function_exists('hash_equals')) {
