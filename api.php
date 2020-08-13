@@ -25,11 +25,11 @@
  */
 
 /*
-    Third Party Update by SuperSonic v2.4
-        https://git.io/Jfvrg
-
-    (c) 2020 SuperSonic (https://github.com/supersonictw)
-*/
+ * Third Party Update by SuperSonic v2.4
+ * https://git.io/Jfvrg
+ *
+ * (c) 2020 SuperSonic (https://github.com/supersonictw)
+ */
 
 if (!function_exists('hash_equals')) {
     defined('USE_MB_STRING') or define('USE_MB_STRING', function_exists('mb_strlen'));
@@ -692,34 +692,31 @@ class LINEAPI
 
 class LINEMSG
 {
-    public function QuickReply($actions)
+    public static function QuickReply($actions)
     {
-        $MsgObject = array(
+        return array("quickReply" => array(
             "items" => $actions,
-        );
-        return array("quickReply" => $MsgObject);
+        ));
     }
 
-    public function Text($msgText)
+    public static function Text($msgText)
     {
-        $MsgObject = array(
+        return array(
             "type" => "text",
             "text" => $msgText,
         );
-        return $MsgObject;
     }
 
-    public function Sticker($packageId, $stickerId)
+    public static function Sticker($packageId, $stickerId)
     {
-        $MsgObject = array(
+        return array(
             "type" => "sticker",
             "packageId" => $packageId,
             "stickerId" => $stickerId,
         );
-        return $MsgObject;
     }
 
-    public function Image($url, $preview_url = null)
+    public static function Image($url, $preview_url = null)
     {
         if ($preview_url == null) {
             $preview = $url;
@@ -727,25 +724,23 @@ class LINEMSG
             $preview = $preview_url;
         }
 
-        $MsgObject = array(
+        return array(
             "type" => "image",
             "originalContentUrl" => $url,
             "previewImageUrl" => $preview,
         );
-        return $MsgObject;
     }
 
-    public function Video($url, $preview_url)
+    public static function Video($url, $preview_url)
     {
-        $MsgObject = array(
+        return array(
             "type" => "video",
             "originalContentUrl" => $url,
             "previewImageUrl" => $preview_url,
         );
-        return $MsgObject;
     }
 
-    public function Audio($url, $second = null)
+    public static function Audio($url, $second = null)
     {
         if ($second == null) {
             $seconds = 0;
@@ -753,27 +748,25 @@ class LINEMSG
             $seconds = $second;
         }
 
-        $MsgObject = array(
+        return array(
             "type" => "audio",
             "originalContentUrl" => $url,
             "duration" => $seconds,
         );
-        return $MsgObject;
     }
 
-    public function Location($title, $address, $latitude, $longitude)
+    public static function Location($title, $address, $latitude, $longitude)
     {
-        $MsgObject = array(
+        return array(
             "type" => "location",
             "title" => $title,
             "address" => $address,
             "latitude" => $latitude,
             "longitude" => $longitude,
         );
-        return $MsgObject;
     }
 
-    public function Imagemap($baseUrl, $altText, $width, $height, $action)
+    public static function Imagemap($baseUrl, $altText, $width, $height, $action)
     {
         if (isset($action["type"])) {
             $actions = array($action);
@@ -787,44 +780,41 @@ class LINEMSG
             "width" => $width,
             "height" => $height,
         );
-        $MsgObject = array(
+        return array(
             "type" => "imagemap",
             "baseUrl" => $baseUrl,
             "altText" => $altText,
             "baseSize" => $baseSize,
             "actions" => $actions,
         );
-        return $MsgObject;
     }
 
-    public function Template($altText, $template)
+    public static function Template($altText, $template)
     {
         foreach ($template as $num => $var) {
             if ($var == null) {
                 unset($template[$num]);
             }
         }
-        $MsgObject = array(
+        return array(
             "type" => "template",
             "altText" => $altText,
             "template" => $template,
         );
-        return $MsgObject;
     }
 
-    public function Flex($altText, $contents)
+    public static function Flex($altText, $contents)
     {
         foreach ($contents as $num => $var) {
             if ($var == null) {
                 unset($contents[$num]);
             }
         }
-        $MsgObject = array(
+        return array(
             "type" => "flex",
             "altText" => $altText,
             "contents" => $contents,
         );
-        return $MsgObject;
     }
 }
 
