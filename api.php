@@ -31,14 +31,14 @@
  * (c) 2020 SuperSonic (https://github.com/supersonictw)
  */
 
-if (!function_exists('hash_equals')) {
-    defined('USE_MB_STRING') or define('USE_MB_STRING', function_exists('mb_strlen'));
+if (!function_exists("hash_equals")) {
+    defined("USE_MB_STRING") or define("USE_MB_STRING", function_exists("mb_strlen"));
 
     function hash_equals($knownString, $userString)
     {
         $strlen = function ($string) {
             if (USE_MB_STRING) {
-                return mb_strlen($string, '8bit');
+                return mb_strlen($string, "8bit");
             }
 
             return strlen($string);
@@ -91,8 +91,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/oauth/accessToken', false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/oauth/accessToken", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         } else {
@@ -122,8 +122,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/oauth/revoke', false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/oauth/revoke", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }
@@ -133,7 +133,7 @@ class LINEAPI
     {
         $header = array(
             "Content-Type: application/json",
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -144,8 +144,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/user/' . urlencode($userId) . '/linkToken', false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/user/${urlencode($userId)}/linkToken", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         } else {
@@ -156,7 +156,7 @@ class LINEAPI
     public function getProfile($userId)
     {
         $header = array(
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -166,8 +166,76 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/profile/' . urlencode($userId), false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/profile/${urlencode($userId)}", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        } else {
+            return json_decode($response);
+        }
+    }
+
+    public function getFollowersIds($groupId, $continuationToken = null)
+    {
+        $next = $continuationToken != null ? "?start=$continuationToken" : "";
+
+        $header = array(
+            "Authorization: Bearer $this->channelAccessToken",
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "GET",
+                "header" => implode("\r\n", $header),
+            ),
+        ));
+
+        $response = file_get_contents("$this->host/v2/bot/followers/ids${urlencode($next)}", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        } else {
+            return json_decode($response);
+        }
+    }
+
+    public function getGroup($groupId)
+    {
+        $header = array(
+            "Authorization: Bearer $this->channelAccessToken",
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "GET",
+                "header" => implode("\r\n", $header),
+            ),
+        ));
+
+        $response = file_get_contents("$this->host/v2/bot/group/${urlencode($groupId)}/summary", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        } else {
+            return json_decode($response);
+        }
+    }
+
+    public function getGroupMemberCount($groupId)
+    {
+        $header = array(
+            "Authorization: Bearer $this->channelAccessToken",
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "GET",
+                "header" => implode("\r\n", $header),
+            ),
+        ));
+
+        $response = file_get_contents("$this->host/v2/bot/group/${urlencode($groupId)}/members/count", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         } else {
@@ -178,7 +246,7 @@ class LINEAPI
     public function getGroupMemberInfo($groupId, $userId)
     {
         $header = array(
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -188,8 +256,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/group/' . urlencode($groupId) . '/member/' . urlencode($userId), false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/group/${urlencode($groupId)}/member/${urlencode($userId)}", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         } else {
@@ -199,14 +267,10 @@ class LINEAPI
 
     public function getGroupMemberIds($groupId, $continuationToken = null)
     {
-        if ($continuationToken != null) {
-            $next = "?start=" . $continuationToken;
-        } else {
-            $next = "";
-        }
+        $next = $continuationToken != null ? "?start=$continuationToken" : "";
 
         $header = array(
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -216,8 +280,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/group/' . urlencode($groupId) . '/members/ids' . urlencode($next), false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/group/${urlencode($groupId)}/members/ids${urlencode($next)}", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         } else {
@@ -229,7 +293,7 @@ class LINEAPI
     {
         $header = array(
             "Content-Type: application/json",
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -240,17 +304,17 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/group/' . urlencode($groupId) . '/leave', false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/group/${urlencode($groupId)}/leave", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }
     }
 
-    public function getRoomMemberInfo($roomId, $userId)
+    public function getRoomMemberCount($roomId)
     {
         $header = array(
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -260,8 +324,30 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/room/' . urlencode($roomId) . '/member/' . urlencode($userId), false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/room/${urlencode($roomId)}/members/count", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
+            http_response_code(500);
+            error_log("Request failed: " . $response);
+        } else {
+            return json_decode($response);
+        }
+    }
+
+    public function getRoomMemberInfo($roomId, $userId)
+    {
+        $header = array(
+            "Authorization: Bearer $this->channelAccessToken",
+        );
+
+        $context = stream_context_create(array(
+            "http" => array(
+                "method" => "GET",
+                "header" => implode("\r\n", $header),
+            ),
+        ));
+
+        $response = file_get_contents("$this->host/v2/bot/room/${urlencode($roomId)}/member/${urlencode($userId)}", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         } else {
@@ -271,14 +357,10 @@ class LINEAPI
 
     public function getRoomMemberIds($roomId, $continuationToken = null)
     {
-        if ($continuationToken != null) {
-            $next = "?start=" . $continuationToken;
-        } else {
-            $next = "";
-        }
+        $next = $continuationToken != null ? "?start=$continuationToken" : "";
 
         $header = array(
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -288,8 +370,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/room/' . urlencode($roomId) . '/members/ids' . urlencode($next), false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/room/${urlencode($roomId)}/members/ids${urlencode($next)}", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         } else {
@@ -301,7 +383,7 @@ class LINEAPI
     {
         $header = array(
             "Content-Type: application/json",
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -312,8 +394,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/room/' . urlencode($roomId) . '/leave', false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/room/${urlencode($roomId)}/leave", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }
@@ -321,13 +403,13 @@ class LINEAPI
 
     public function parseEvents()
     {
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             http_response_code(405);
             error_log("Method not allowed");
             exit();
         }
 
-        $entityBody = file_get_contents('php://input');
+        $entityBody = file_get_contents("php://input");
 
         if (strlen($entityBody) === 0) {
             http_response_code(400);
@@ -335,19 +417,19 @@ class LINEAPI
             exit();
         }
 
-        if (!hash_equals($this->sign($entityBody), $_SERVER['HTTP_X_LINE_SIGNATURE'])) {
+        if (!hash_equals($this->sign($entityBody), $_SERVER["HTTP_X_LINE_SIGNATURE"])) {
             http_response_code(400);
             error_log("Invalid signature value");
             exit();
         }
 
         $data = json_decode($entityBody, true);
-        if (!isset($data['events'])) {
+        if (!isset($data["events"])) {
             http_response_code(400);
             error_log("Invalid request body: missing events property");
             exit();
         }
-        return $data['events'];
+        return $data["events"];
     }
 
     public function replyMessage($replyToken, $message)
@@ -360,7 +442,7 @@ class LINEAPI
 
         $header = array(
             "Content-Type: application/json",
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $content = array(
@@ -376,8 +458,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/message/reply', false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/message/reply", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }
@@ -393,7 +475,7 @@ class LINEAPI
 
         $header = array(
             "Content-Type: application/json",
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $content = array(
@@ -409,8 +491,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/message/push', false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/message/push", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }
@@ -431,7 +513,7 @@ class LINEAPI
 
         $header = array(
             "Content-Type: application/json",
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -442,8 +524,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/message/multicast', false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/message/multicast", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }
@@ -452,7 +534,7 @@ class LINEAPI
     public function getMessageObject($msgid)
     {
         $header = array(
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -462,8 +544,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->data_host . '/v2/bot/message/' . urlencode($msgid) . '/content', false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->data_host/v2/bot/message/${urlencode($msgid)}/content", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         } else {
@@ -486,7 +568,7 @@ class LINEAPI
     public function getRichMenuList()
     {
         $header = array(
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -496,8 +578,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/richmenu/list', false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/richmenu/list", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         } else {
@@ -508,7 +590,7 @@ class LINEAPI
     public function getRichMenu($richMenuId)
     {
         $header = array(
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -518,8 +600,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/richmenu/' . urlencode($richMenuId), false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/richmenu/${urlencode($richMenuId)}", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         } else {
@@ -531,7 +613,7 @@ class LINEAPI
     {
         $header = array(
             "Content-Type: application/json",
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -542,8 +624,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/richmenu', false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/richmenu", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         } else {
@@ -554,7 +636,7 @@ class LINEAPI
     public function deleteRichMenu($richMenuId)
     {
         $header = array(
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -564,8 +646,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/richmenu/' . urlencode($richMenuId), false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/richmenu/${urlencode($richMenuId)}", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }
@@ -574,7 +656,7 @@ class LINEAPI
     public function getRichMenuIdOfUser($userId)
     {
         $header = array(
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -584,8 +666,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/user/' . urlencode($userId) . '/richmenu', false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/user/${urlencode($userId)}/richmenu", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         } else {
@@ -597,7 +679,7 @@ class LINEAPI
     {
         $header = array(
             "Content-Type: application/json",
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -608,8 +690,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/user/' . urlencode($userId) . '/richmenu/' . urlencode($richMenuId), false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/user/${urlencode($userId)}/richmenu/${urlencode($richMenuId)}", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }
@@ -618,7 +700,7 @@ class LINEAPI
     public function unlinkRichMenuFromUser($userId, $richMenuId)
     {
         $header = array(
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -628,30 +710,28 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->host . '/v2/bot/user/' . urlencode($userId) . '/richmenu/' . urlencode($richMenuId), false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->host/v2/bot/user/${urlencode($userId)}/richmenu/${urlencode($richMenuId)}", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }
     }
 
-    //public function uploadRichMenuImage($path)
-    # I think it is not a good way to upload file with "file_get_contents"
-    /*    #Uncommit This to use the function for upload File with cURL
-    public function uploadRichMenuImage($path) {
-    $ch = curl_init($this->data_host.'/v2/bot/richmenu/'.$richMenuId.'/content');
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, array(
-    'file_input' => $path,
-    ));
-    curl_exec($ch);
+    # I think it is not a good way to upload any file with "file_get_contents"
+    public function uploadRichMenuImage($richMenuId, $path)
+    {
+        $ch = curl_init("$this->data_host/v2/bot/richmenu/${urlencode($richMenuId)}/content");
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+            "file_input" => $path,
+        ));
+        curl_exec($ch);
     }
-     */
 
     public function getRichMenuImage($richMenuId)
     {
         $header = array(
-            'Authorization: Bearer ' . $this->channelAccessToken,
+            "Authorization: Bearer $this->channelAccessToken",
         );
 
         $context = stream_context_create(array(
@@ -661,8 +741,8 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents($this->data_host . '/v2/bot/richmenu/' . urlencode($richMenuId) . '/content', false, $context);
-        if (strpos($http_response_header[0], '200') === false) {
+        $response = file_get_contents("$this->data_host/v2/bot/richmenu/${urlencode($richMenuId)}/content", false, $context);
+        if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         } else {
@@ -684,7 +764,7 @@ class LINEAPI
 
     private function sign($body)
     {
-        $hash = hash_hmac('sha256', $body, $this->channelSecret, true);
+        $hash = hash_hmac("sha256", $body, $this->channelSecret, true);
         $signature = base64_encode($hash);
         return $signature;
     }
