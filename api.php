@@ -62,10 +62,19 @@ if (!function_exists("hash_equals")) {
 class LINEAPI
 {
     /**
-     * @var bool $responseDecodeAsArray Read as array while decoding.
+     * If read the response as array while decoding JSON in `requestFactory`.
+     *
+     * @var boolean $responseDecodeAsArray The default is layout as Object, set value to `true` that it will use Array.
      */
     public $responseDecodeAsArray = false;
 
+    /**
+     * The constant is used for `requestFactory` to set the HTTP Method while transporting.
+     *
+     * @var integer HTTP_METHOD_GET
+     * @var integer HTTP_METHOD_POST
+     * @var integer HTTP_METHOD_DELETE
+     */
     private const HTTP_METHOD_GET = 0;
     private const HTTP_METHOD_POST = 1;
     private const HTTP_METHOD_DELETE = 2;
@@ -78,6 +87,15 @@ class LINEAPI
         $this->channelSecret = $channelSecret;
     }
 
+    /**
+     * Issue channel access token.
+     * https://developers.line.biz/en/reference/messaging-api/#issue-channel-access-token
+     *
+     * @param string $channelId
+     * @param string $channelSecret
+     *
+     * @return object
+     */
     public function issueChannelAccessToken($channelId, $channelSecret)
     {
         $header = array(
@@ -111,6 +129,12 @@ class LINEAPI
         }
     }
 
+    /**
+     * Revoke channel access token.
+     * https://developers.line.biz/en/reference/messaging-api/#revoke-channel-access-token
+     *
+     * @return boolean If it success, will return `true`.
+     */
     public function revokeChannelAccessToken()
     {
         $header = array(
@@ -140,6 +164,14 @@ class LINEAPI
         return true;
     }
 
+    /**
+     * Issue link token.
+     * https://developers.line.biz/en/reference/messaging-api/#issue-link-token
+     *
+     * @param string $userId
+     *
+     * @return object
+     */
     public function issueUserLinkToken($userId)
     {
         return $this->requestFactory(
@@ -148,6 +180,14 @@ class LINEAPI
         );
     }
 
+    /**
+     * Get profile.
+     * https://developers.line.biz/en/reference/messaging-api/#get-profile
+     *
+     * @param string $userId
+     *
+     * @return object
+     */
     public function getProfile($userId)
     {
         return $this->requestFactory(
@@ -156,6 +196,15 @@ class LINEAPI
         );
     }
 
+    /**
+     * Get the user ID of all users who added your LINE Official Accout as a friend.
+     * https://developers.line.biz/en/reference/messaging-api/#get-follower-ids
+     *
+     * @param string $groupId
+     * @param string $continuationToken (optional)
+     *
+     * @return object
+     */
     public function getFollowersIds($groupId, $continuationToken = null)
     {
         $next = $continuationToken != null ? "?start=$continuationToken" : "";
@@ -165,6 +214,14 @@ class LINEAPI
         );
     }
 
+    /**
+     * Get group summary.
+     * https://developers.line.biz/en/reference/messaging-api/#get-group-summary
+     *
+     * @param string $groupId
+     *
+     * @return object
+     */
     public function getGroup($groupId)
     {
         return $this->requestFactory(
@@ -173,6 +230,14 @@ class LINEAPI
         );
     }
 
+    /**
+     * Get number of users in a group.
+     * https://developers.line.biz/en/reference/messaging-api/#get-members-group-count
+     *
+     * @param string $groupId
+     *
+     * @return object
+     */
     public function getGroupMemberCount($groupId)
     {
         return $this->requestFactory(
@@ -181,6 +246,15 @@ class LINEAPI
         );
     }
 
+    /**
+     * Get group member profile.
+     * https://developers.line.biz/en/reference/messaging-api/#get-group-member-profile
+     *
+     * @param string $groupId
+     * @param string $userId
+     *
+     * @return object
+     */
     public function getGroupMemberInfo($groupId, $userId)
     {
         return $this->requestFactory(
@@ -189,6 +263,15 @@ class LINEAPI
         );
     }
 
+    /**
+     * Get group member user IDs.
+     * https://developers.line.biz/en/reference/messaging-api/#get-group-member-user-ids
+     *
+     * @param string $groupId
+     * @param string $continuationToken (optional)
+     *
+     * @return object
+     */
     public function getGroupMemberIds($groupId, $continuationToken = null)
     {
         $next = $continuationToken != null ? "?start=$continuationToken" : "";
@@ -198,6 +281,14 @@ class LINEAPI
         );
     }
 
+    /**
+     * Leave group.
+     * https://developers.line.biz/en/reference/messaging-api/#leave-group
+     *
+     * @param string $groupId
+     *
+     * @return object
+     */
     public function leaveGroup($groupId)
     {
         return $this->requestFactory(
@@ -206,6 +297,14 @@ class LINEAPI
         );
     }
 
+    /**
+     * Get number of users in a room.
+     * https://developers.line.biz/en/reference/messaging-api/#get-members-room-count
+     *
+     * @param string $roomId
+     *
+     * @return object
+     */
     public function getRoomMemberCount($roomId)
     {
         return $this->requestFactory(
@@ -214,6 +313,15 @@ class LINEAPI
         );
     }
 
+    /**
+     * Get room member user IDs.
+     * https://developers.line.biz/en/reference/messaging-api/#get-room-member-profile
+     *
+     * @param string $roomId
+     * @param string $userId
+     *
+     * @return object
+     */
     public function getRoomMemberInfo($roomId, $userId)
     {
         return $this->requestFactory(
@@ -222,6 +330,15 @@ class LINEAPI
         );
     }
 
+    /**
+     * Get room member profile.
+     * https://developers.line.biz/en/reference/messaging-api/#get-room-member-user-ids
+     *
+     * @param string $roomId
+     * @param string $continuationToken (optional)
+     *
+     * @return object
+     */
     public function getRoomMemberIds($roomId, $continuationToken = null)
     {
         $next = $continuationToken != null ? "?start=$continuationToken" : "";
@@ -231,6 +348,14 @@ class LINEAPI
         );
     }
 
+    /**
+     * Leave room.
+     * https://developers.line.biz/en/reference/messaging-api/#leave-room
+     *
+     * @param string $roomId
+     *
+     * @return object
+     */
     public function leaveRoom($roomId)
     {
         $next = $continuationToken != null ? "?start=$continuationToken" : "";
@@ -240,7 +365,17 @@ class LINEAPI
         );
     }
 
-    public function replyMessage($replyToken, $message)
+    /**
+     * Send reply message.
+     * https://developers.line.biz/en/reference/messaging-api/#send-reply-message
+     *
+     * @param string $replyToken
+     * @param string $message
+     * @param boolean $notificationDisabled (optional)
+     *
+     * @return object
+     */
+    public function replyMessage($replyToken, $message, $notificationDisabled = false)
     {
         if (isset($message["type"])) {
             $messages = array($message);
@@ -251,6 +386,7 @@ class LINEAPI
         $content = array(
             "replyToken" => $replyToken,
             "messages" => $messages,
+            "notificationDisabled" => $notificationDisabled,
         );
 
         return $this->requestFactory(
@@ -260,7 +396,17 @@ class LINEAPI
         );
     }
 
-    public function pushMessage($targetId, $message)
+    /**
+     * Send push message.
+     * https://developers.line.biz/en/reference/messaging-api/#send-push-message
+     *
+     * @param string $targetId
+     * @param string $message
+     * @param boolean $notificationDisabled (optional)
+     *
+     * @return object
+     */
+    public function pushMessage($targetId, $message, $notificationDisabled = false)
     {
         if (isset($message["type"])) {
             $messages = array($message);
@@ -271,6 +417,7 @@ class LINEAPI
         $content = array(
             "to" => $targetId,
             "messages" => $messages,
+            "notificationDisabled" => $notificationDisabled,
         );
 
         return $this->requestFactory(
@@ -280,7 +427,17 @@ class LINEAPI
         );
     }
 
-    public function multicast($targetId, $message)
+    /**
+     * Send multicast message.
+     * https://developers.line.biz/en/reference/messaging-api/#send-multicast-message
+     *
+     * @param array $targetIds
+     * @param string $message
+     * @param boolean $notificationDisabled
+     *
+     * @return object
+     */
+    public function multicast($targetIds, $message)
     {
         if (isset($message["type"])) {
             $messages = array($message);
@@ -289,8 +446,9 @@ class LINEAPI
         }
 
         $content = array(
-            "to" => $targetId,
+            "to" => $targetIds,
             "messages" => $messages,
+            "notificationDisabled" => $notificationDisabled,
         );
 
         return $this->requestFactory(
@@ -300,27 +458,65 @@ class LINEAPI
         );
     }
 
-    public function getMessageObject($msgid)
+    /**
+     * Confirming that an audience is ready to accept messages.
+     * https://developers.line.biz/en/docs/messaging-api/sending-messages/#get-audience-status
+     *
+     * @param string $audienceGroupId
+     *
+     * @return object
+     */
+    public function confirmingAudienceGroupStatus($audienceGroupId)
     {
         return $this->requestFactory(
-            "$this->data_host/v2/bot/message/${urlencode($msgid)}/content",
+            "$this->host/v2/bot/audienceGroup/${urlencode($audienceGroupId)}",
+            self::HTTP_METHOD_GET
+        );
+    }
+
+    /**
+     * Get content.
+     * https://developers.line.biz/en/reference/messaging-api/#get-content
+     *
+     * @param string $messageId
+     *
+     * @return binary
+     */
+    public function getMessageObject($messageId)
+    {
+        return $this->requestFactory(
+            "$this->data_host/v2/bot/message/${urlencode($messageId)}/content",
             self::HTTP_METHOD_GET,
             $decode = false
         );
     }
 
-    public function downloadMessageObject($msgid, $path = "./")
+    /**
+     * Save file of the message from the function `getMessageObject`.
+     *
+     * @param string $messageId
+     * @param string $path (optional)
+     *
+     * @return boolean If it success, will return `true`.
+     */
+    public function downloadMessageObject($messageId, $path = "./")
     {
-        $response = $this->getMessageObject($msgid);
+        $response = $this->getMessageObject($messageId);
         if ($response != null) {
-            $file = fopen($path . $msgid, "wb");
+            $file = fopen($path . $messageId, "wb");
             fwrite($file, $response);
             fclose($file);
-        } else {
-            return false;
+            return true;
         }
+        return false;
     }
 
+    /**
+     * Get rich menu list.
+     * https://developers.line.biz/en/reference/messaging-api/#get-rich-menu-list
+     *
+     * @return object
+     */
     public function getRichMenuList()
     {
         return $this->requestFactory(
@@ -329,6 +525,14 @@ class LINEAPI
         );
     }
 
+    /**
+     * Get rich menu.
+     * https://developers.line.biz/en/reference/messaging-api/#get-rich-menu
+     *
+     * @param string $richMenuId
+     *
+     * @return object
+     */
     public function getRichMenu($richMenuId)
     {
         return $this->requestFactory(
@@ -337,6 +541,14 @@ class LINEAPI
         );
     }
 
+    /**
+     * Create rich menu.
+     * https://developers.line.biz/en/reference/messaging-api/#create-rich-menu
+     *
+     * @param string $content
+     *
+     * @return object
+     */
     public function createRichMenu($content)
     {
         return $this->requestFactory(
@@ -346,6 +558,14 @@ class LINEAPI
         );
     }
 
+    /**
+     * Delete rich menu.
+     * https://developers.line.biz/en/reference/messaging-api/#delete-rich-menu
+     *
+     * @param string $richMenuId
+     *
+     * @return object
+     */
     public function deleteRichMenu($richMenuId)
     {
         return $this->requestFactory(
@@ -354,6 +574,14 @@ class LINEAPI
         );
     }
 
+    /**
+     * Get rich menu ID of user.
+     * https://developers.line.biz/en/reference/messaging-api/#get-rich-menu-id-of-user
+     *
+     * @param string $userId
+     *
+     * @return object
+     */
     public function getRichMenuIdOfUser($userId)
     {
         return $this->requestFactory(
@@ -362,6 +590,15 @@ class LINEAPI
         );
     }
 
+    /**
+     * Link rich menu to user.
+     * https://developers.line.biz/en/reference/messaging-api/#link-rich-menu-to-user
+     *
+     * @param string $userId
+     * @param string $richMenuId
+     *
+     * @return object
+     */
     public function linkRichMenuToUser($userId, $richMenuId)
     {
         return $this->requestFactory(
@@ -370,6 +607,15 @@ class LINEAPI
         );
     }
 
+    /**
+     * Unlink rich menu from user.
+     * https://developers.line.biz/en/reference/messaging-api/#unlink-rich-menu-from-user
+     *
+     * @param string $userId
+     * @param string $richMenuId
+     *
+     * @return object
+     */
     public function unlinkRichMenuFromUser($userId, $richMenuId)
     {
         return $this->requestFactory(
@@ -379,6 +625,15 @@ class LINEAPI
     }
 
     # I think it is not a good way to upload any file with "file_get_contents"
+    /**
+     * Upload rich menu image. (libcURL used)
+     * https://developers.line.biz/en/reference/messaging-api/#upload-rich-menu-image.
+     *
+     * @param string $richMenuId
+     * @param string $path
+     *
+     * @return void
+     */
     public function uploadRichMenuImage($richMenuId, $path)
     {
         $ch = curl_init("$this->data_host/v2/bot/richmenu/${urlencode($richMenuId)}/content");
@@ -389,6 +644,14 @@ class LINEAPI
         curl_exec($ch);
     }
 
+    /**
+     * Download rich menu image. (Get the binary only)
+     * https://developers.line.biz/en/reference/messaging-api/#download-rich-menu-image
+     *
+     * @param string $richMenuId
+     *
+     * @return binary
+     */
     public function getRichMenuImage($richMenuId)
     {
         return $this->requestFactory(
@@ -398,6 +661,14 @@ class LINEAPI
         );
     }
 
+    /**
+     * Save image of the rich menu from the function `getRichMenuImage`.
+     *
+     * @param string $richMenuId
+     * @param string $path (optional)
+     *
+     * @return boolean If it success, will return `true`.
+     */
     public function downloadRichMenuImage($richMenuId, $path = "./")
     {
         $response = $this->getRichMenuImage($richMenuId);
@@ -405,9 +676,9 @@ class LINEAPI
             $file = fopen($path . $richMenuId, "wb");
             fwrite($file, $response);
             fclose($file);
-        } else {
-            return false;
+            return true;
         }
+        return false;
     }
 
     /**
@@ -466,7 +737,7 @@ class LINEAPI
      * @param string $targetUri An URL for sending request.
      * @param integer $method HTTP Method.
      * @param mixed $data Content for doing POST. (optional)
-     * @param bool $decode Decode the response from JSON. (optional)
+     * @param boolean $decode Decode the response from JSON. (optional)
      *
      * @return mixed
      */
