@@ -19,7 +19,7 @@ There is only an `api.php` file for you to include it into your LINE Messaging B
 
 If you want the official LINE Messaging API for `PHP 7.x`, go to [line-bot-sdk-php](https://github.com/line/line-bot-sdk-php) for getting the full version.
 
-## Notice
+## Note
 
 It's using the function "file_get_contents()" as its HTTP Client for connecting to LINE API Platform.
 
@@ -37,7 +37,7 @@ Try to read and learn from [examples](./examples/) for understanding how to crea
 
 Before running the examples, please make sure that you have setted the Channel access token and Channel secret of your BOT.
 
-## Requirements
+## Requirement
 
     PHP >= 5.4
 
