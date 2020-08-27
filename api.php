@@ -59,6 +59,12 @@ if (!function_exists("hash_equals")) {
     }
 }
 
+/**
+ * LINEAPI (Messaging API)
+ * https://developers.line.biz/en/reference/messaging-api/
+ *
+ * This is the Messaging API for creating LINE Chat BOTs.
+ */
 class LINEAPI
 {
     /**
@@ -987,8 +993,22 @@ class LINEAPI
     }
 }
 
+/**
+ * LINEMSG
+ * https://developers.line.biz/en/reference/messaging-api/#message-objects
+ *
+ * This is the wrapper for creating a message object.
+ */
 class LINEMSG
 {
+    /**
+     * Quick reply
+     * https://developers.line.biz/en/reference/messaging-api/#quick-reply
+     *
+     * @param array $action
+     *
+     * @return array
+     */
     public static function QuickReply($actions)
     {
         return array("quickReply" => array(
@@ -996,6 +1016,14 @@ class LINEMSG
         ));
     }
 
+    /**
+     * Text message
+     * https://developers.line.biz/en/reference/messaging-api/#text-message
+     *
+     * @param string $msgText
+     *
+     * @return array
+     */
     public static function Text($msgText)
     {
         return array(
@@ -1004,6 +1032,15 @@ class LINEMSG
         );
     }
 
+    /**
+     * Sticker message
+     * https://developers.line.biz/en/reference/messaging-api/#sticker-message
+     *
+     * @param string $packageId
+     * @param string $stickerId
+     *
+     * @return array
+     */
     public static function Sticker($packageId, $stickerId)
     {
         return array(
@@ -1013,6 +1050,15 @@ class LINEMSG
         );
     }
 
+    /**
+     * Image message
+     * https://developers.line.biz/en/reference/messaging-api/#image-message
+     *
+     * @param string $url
+     * @param string $preview_url (optional)
+     *
+     * @return array
+     */
     public static function Image($url, $preview_url = null)
     {
         if ($preview_url == null) {
@@ -1028,6 +1074,15 @@ class LINEMSG
         );
     }
 
+    /**
+     * Video message
+     * https://developers.line.biz/en/reference/messaging-api/#video-message
+     *
+     * @param string $url
+     * @param string $preview_url
+     *
+     * @return array
+     */
     public static function Video($url, $preview_url)
     {
         return array(
@@ -1037,6 +1092,15 @@ class LINEMSG
         );
     }
 
+    /**
+     * Audio message
+     * https://developers.line.biz/en/reference/messaging-api/#audio-message
+     *
+     * @param string $url
+     * @param integer $second (optional)
+     *
+     * @return array
+     */
     public static function Audio($url, $second = null)
     {
         if ($second == null) {
@@ -1052,6 +1116,17 @@ class LINEMSG
         );
     }
 
+    /**
+     * Location message
+     * https://developers.line.biz/en/reference/messaging-api/#location-message
+     *
+     * @param string $title
+     * @param string $address
+     * @param double $latitude
+     * @param double $longitude
+     *
+     * @return array
+     */
     public static function Location($title, $address, $latitude, $longitude)
     {
         return array(
@@ -1063,6 +1138,18 @@ class LINEMSG
         );
     }
 
+    /**
+     * Imagemap message
+     * https://developers.line.biz/en/reference/messaging-api/#imagemap-message
+     *
+     * @param string $baseUrl
+     * @param string $altText
+     * @param integer $width
+     * @param integer $height
+     * @param array $action
+     *
+     * @return array
+     */
     public static function Imagemap($baseUrl, $altText, $width, $height, $action)
     {
         if (isset($action["type"])) {
@@ -1086,6 +1173,15 @@ class LINEMSG
         );
     }
 
+    /**
+     * Template messages
+     * https://developers.line.biz/en/reference/messaging-api/#template-messages
+     *
+     * @param string $altText
+     * @param array $template
+     *
+     * @return array
+     */
     public static function Template($altText, $template)
     {
         foreach ($template as $num => $var) {
@@ -1100,6 +1196,15 @@ class LINEMSG
         );
     }
 
+    /**
+     * Flex Message
+     * https://developers.line.biz/en/reference/messaging-api/#flex-message
+     *
+     * @param string $altText
+     * @param array $contents
+     *
+     * @return array
+     */
     public static function Flex($altText, $contents)
     {
         foreach ($contents as $num => $var) {
