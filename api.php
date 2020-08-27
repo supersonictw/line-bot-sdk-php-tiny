@@ -988,7 +988,7 @@ class LINEAPI
             http_response_code(500);
             error_log("Request failed: " . $response);
         } else {
-            return !$json_decode ? $response : json_decode($response, $this->responseDecodeAsArray);
+            return !$decode ? $response : json_decode($response, $this->responseDecodeAsArray);
         }
     }
 }
