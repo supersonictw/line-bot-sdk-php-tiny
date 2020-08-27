@@ -1055,16 +1055,16 @@ class LINEMSG
      * https://developers.line.biz/en/reference/messaging-api/#image-message
      *
      * @param string $url
-     * @param string $preview_url (optional)
+     * @param string $previewUrl (optional)
      *
      * @return array
      */
-    public static function Image($url, $preview_url = null)
+    public static function Image($url, $previewUrl = null)
     {
-        if ($preview_url == null) {
+        if ($previewUrl == null) {
             $preview = $url;
         } else {
-            $preview = $preview_url;
+            $preview = $previewUrl;
         }
 
         return array(
@@ -1079,16 +1079,16 @@ class LINEMSG
      * https://developers.line.biz/en/reference/messaging-api/#video-message
      *
      * @param string $url
-     * @param string $preview_url
+     * @param string $previewUrl
      *
      * @return array
      */
-    public static function Video($url, $preview_url)
+    public static function Video($url, $previewUrl)
     {
         return array(
             "type" => "video",
             "originalContentUrl" => $url,
-            "previewImageUrl" => $preview_url,
+            "previewImageUrl" => $previewUrl,
         );
     }
 
@@ -1217,6 +1217,28 @@ class LINEMSG
             "altText" => $altText,
             "contents" => $contents,
         );
+    }
+
+    /**
+     * Change icon and display name
+     * https://developers.line.biz/en/docs/messaging-api/icon-nickname-switch/
+     *
+     * The function will help you assign the message object with icon and display name changing.
+     *
+     * @param array $originalMessage
+     * @param string $name
+     * @param string $iconUrl
+     *
+     * @return array
+     */
+    public static function changeAppearance($originalMessage, $name, $iconUrl)
+    {
+        return array_merge($originalMessage, array(
+            "sender" => array(
+                "name" => $name,
+                "iconUrl" => $iconUrl,
+            ),
+        ));
     }
 }
 
