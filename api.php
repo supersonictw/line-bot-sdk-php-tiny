@@ -1220,6 +1220,12 @@ class LINEMSG
     }
 }
 
+// The classes below is used for creating the object of events with the class `LINEMSG`.
+
+/**
+ * LINEMSG_QuickReply
+ * https://developers.line.biz/en/reference/messaging-api/#items-object
+ */
 class LINEMSG_QuickReply
 {
     public function __construct()
@@ -1319,6 +1325,10 @@ class LINEMSG_QuickReply
     }
 }
 
+/**
+ * LINEMSG_Imagemap
+ * https://developers.line.biz/en/reference/messaging-api/#imagemap-action-objects
+ */
 class LINEMSG_Imagemap
 {
     public function action($type, $url_or_text, $area, $label = null)
@@ -1351,6 +1361,10 @@ class LINEMSG_Imagemap
     }
 }
 
+/**
+ * LINEMSG_Template
+ * https://developers.line.biz/en/reference/messaging-api/#common-properties-of-template-message-objects
+ */
 class LINEMSG_Template
 {
     public function __construct($template)
@@ -1487,6 +1501,10 @@ class LINEMSG_Template
     }
 }
 
+/**
+ * LINEMSG_FlexContainer
+ * https://developers.line.biz/en/reference/messaging-api/#container
+ */
 class LINEMSG_FlexContainer
 {
     public function __construct($container)
