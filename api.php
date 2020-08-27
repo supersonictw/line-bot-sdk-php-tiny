@@ -144,7 +144,7 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents("${self::API_HOST}/v2/oauth/accessToken", false, $context);
+        $response = file_get_contents("self::API_HOST/v2/oauth/accessToken", false, $context);
         if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
@@ -181,7 +181,7 @@ class LINEAPI
             ),
         ));
 
-        $response = file_get_contents("${self::API_HOST}/v2/oauth/revoke", false, $context);
+        $response = file_get_contents("self::API_HOST/v2/oauth/revoke", false, $context);
         if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
@@ -201,7 +201,7 @@ class LINEAPI
     public function getMessageDeliveriesCount($date)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/insight/message/delivery?date=${urlencode($date)}",
+            "self::API_HOST/v2/bot/insight/message/delivery?date=$date",
             self::HTTP_METHOD_GET
         );
     }
@@ -217,7 +217,7 @@ class LINEAPI
     public function getFollowersCount($date)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/insight/followers?date=${urlencode($date)}",
+            "self::API_HOST/v2/bot/insight/followers?date=$date",
             self::HTTP_METHOD_GET
         );
     }
@@ -231,7 +231,7 @@ class LINEAPI
     public function getFriendDemographics()
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/insight/demographic",
+            "self::API_HOST/v2/bot/insight/demographic",
             self::HTTP_METHOD_GET
         );
     }
@@ -247,7 +247,7 @@ class LINEAPI
     public function getUserInteractionStatistics($requestId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/insight/message/event?requestId=${urlencode($requestId)}",
+            "self::API_HOST/v2/bot/insight/message/event?requestId=$requestId",
             self::HTTP_METHOD_GET
         );
     }
@@ -263,7 +263,7 @@ class LINEAPI
     public function issueUserLinkToken($userId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/user/${urlencode($userId)}/linkToken",
+            "self::API_HOST/v2/bot/user/$userId/linkToken",
             self::HTTP_METHOD_POST
         );
     }
@@ -279,7 +279,7 @@ class LINEAPI
     public function getProfile($userId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/profile/${urlencode($userId)}",
+            "self::API_HOST/v2/bot/profile/$userId",
             self::HTTP_METHOD_GET
         );
     }
@@ -297,7 +297,7 @@ class LINEAPI
     {
         $next = $continuationToken != null ? "?start=$continuationToken" : "";
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/followers/ids${urlencode($next)}",
+            "self::API_HOST/v2/bot/followers/ids$next",
             self::HTTP_METHOD_GET
         );
     }
@@ -313,7 +313,7 @@ class LINEAPI
     public function getGroup($groupId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/group/${urlencode($groupId)}/summary",
+            "self::API_HOST/v2/bot/group/$groupId/summary",
             self::HTTP_METHOD_GET
         );
     }
@@ -329,7 +329,7 @@ class LINEAPI
     public function getGroupMemberCount($groupId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/group/${urlencode($groupId)}/members/count",
+            "self::API_HOST/v2/bot/group/$groupId/members/count",
             self::HTTP_METHOD_GET
         );
     }
@@ -346,7 +346,7 @@ class LINEAPI
     public function getGroupMemberInfo($groupId, $userId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/group/${urlencode($groupId)}/member/${urlencode($userId)}",
+            "self::API_HOST/v2/bot/group/$groupId/member/$userId",
             self::HTTP_METHOD_GET
         );
     }
@@ -364,7 +364,7 @@ class LINEAPI
     {
         $next = $continuationToken != null ? "?start=$continuationToken" : "";
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/group/${urlencode($groupId)}/members/ids${urlencode($next)}",
+            "self::API_HOST/v2/bot/group/$groupId/members/ids$next",
             self::HTTP_METHOD_GET
         );
     }
@@ -380,7 +380,7 @@ class LINEAPI
     public function leaveGroup($groupId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/group/${urlencode($groupId)}/leave",
+            "self::API_HOST/v2/bot/group/$groupId/leave",
             self::HTTP_METHOD_POST
         );
     }
@@ -396,7 +396,7 @@ class LINEAPI
     public function getRoomMemberCount($roomId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/room/${urlencode($roomId)}/members/count",
+            "self::API_HOST/v2/bot/room/$roomId/members/count",
             self::HTTP_METHOD_GET
         );
     }
@@ -413,7 +413,7 @@ class LINEAPI
     public function getRoomMemberInfo($roomId, $userId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/room/${urlencode($roomId)}/member/${urlencode($userId)}",
+            "self::API_HOST/v2/bot/room/$roomId/member/$userId",
             self::HTTP_METHOD_GET
         );
     }
@@ -431,7 +431,7 @@ class LINEAPI
     {
         $next = $continuationToken != null ? "?start=$continuationToken" : "";
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/room/${urlencode($roomId)}/members/ids${urlencode($next)}",
+            "self::API_HOST/v2/bot/room/$roomId/members/ids$next",
             self::HTTP_METHOD_GET
         );
     }
@@ -448,7 +448,7 @@ class LINEAPI
     {
         $next = $continuationToken != null ? "?start=$continuationToken" : "";
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/room/${urlencode($roomId)}/leave",
+            "self::API_HOST/v2/bot/room/$roomId/leave",
             self::HTTP_METHOD_POST
         );
     }
@@ -478,7 +478,7 @@ class LINEAPI
         );
 
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/message/reply",
+            "self::API_HOST/v2/bot/message/reply",
             self::HTTP_METHOD_POST,
             $content
         );
@@ -509,7 +509,7 @@ class LINEAPI
         );
 
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/message/push",
+            "self::API_HOST/v2/bot/message/push",
             self::HTTP_METHOD_POST,
             $content
         );
@@ -540,7 +540,7 @@ class LINEAPI
         );
 
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/message/multicast",
+            "self::API_HOST/v2/bot/message/multicast",
             self::HTTP_METHOD_POST,
             $content
         );
@@ -569,7 +569,7 @@ class LINEAPI
         );
 
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/message/broadcast",
+            "self::API_HOST/v2/bot/message/broadcast",
             self::HTTP_METHOD_POST,
             $content
         );
@@ -584,7 +584,7 @@ class LINEAPI
     public function getSendMessagesQuota($audienceGroupId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/message/quota",
+            "self::API_HOST/v2/bot/message/quota",
             self::HTTP_METHOD_GET
         );
     }
@@ -598,7 +598,7 @@ class LINEAPI
     public function getAllMessagesSentCount($audienceGroupId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/message/quota/consumption",
+            "self::API_HOST/v2/bot/message/quota/consumption",
             self::HTTP_METHOD_GET
         );
     }
@@ -612,7 +612,7 @@ class LINEAPI
     public function getReplyMessagesSentCount($audienceGroupId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/message/delivery/reply",
+            "self::API_HOST/v2/bot/message/delivery/reply",
             self::HTTP_METHOD_GET
         );
     }
@@ -626,7 +626,7 @@ class LINEAPI
     public function getPushMessagesSentCount($audienceGroupId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/message/delivery/push",
+            "self::API_HOST/v2/bot/message/delivery/push",
             self::HTTP_METHOD_GET
         );
     }
@@ -640,7 +640,7 @@ class LINEAPI
     public function getMulticastMessagesSentCount($audienceGroupId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/message/delivery/multicast",
+            "self::API_HOST/v2/bot/message/delivery/multicast",
             self::HTTP_METHOD_GET
         );
     }
@@ -654,7 +654,7 @@ class LINEAPI
     public function getBroadcastMessagesSentCount($audienceGroupId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/message/delivery/broadcast",
+            "self::API_HOST/v2/bot/message/delivery/broadcast",
             self::HTTP_METHOD_GET
         );
     }
@@ -670,7 +670,7 @@ class LINEAPI
     public function confirmingAudienceGroupStatus($audienceGroupId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/audienceGroup/${urlencode($audienceGroupId)}",
+            "self::API_HOST/v2/bot/audienceGroup/$audienceGroupId",
             self::HTTP_METHOD_GET
         );
     }
@@ -686,7 +686,7 @@ class LINEAPI
     public function getMessageObject($messageId)
     {
         return $this->requestFactory(
-            "${self::API_DATA_HOST}/v2/bot/message/${urlencode($messageId)}/content",
+            "self::API_DATA_HOST/v2/bot/message/$messageId/content",
             self::HTTP_METHOD_GET,
             $decode = false
         );
@@ -721,7 +721,7 @@ class LINEAPI
     public function getRichMenuList()
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/richmenu/list",
+            "self::API_HOST/v2/bot/richmenu/list",
             self::HTTP_METHOD_GET
         );
     }
@@ -737,7 +737,7 @@ class LINEAPI
     public function getRichMenu($richMenuId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/richmenu/${urlencode($richMenuId)}",
+            "self::API_HOST/v2/bot/richmenu/$richMenuId",
             self::HTTP_METHOD_GET
         );
     }
@@ -753,7 +753,7 @@ class LINEAPI
     public function createRichMenu($content)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/richmenu",
+            "self::API_HOST/v2/bot/richmenu",
             self::HTTP_METHOD_POST,
             $content
         );
@@ -770,7 +770,7 @@ class LINEAPI
     public function deleteRichMenu($richMenuId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/richmenu/${urlencode($richMenuId)}",
+            "self::API_HOST/v2/bot/richmenu/$richMenuId",
             self::HTTP_METHOD_DELETE
         );
     }
@@ -786,7 +786,7 @@ class LINEAPI
     public function getRichMenuIdOfUser($userId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/user/${urlencode($userId)}/richmenu",
+            "self::API_HOST/v2/bot/user/$userId/richmenu",
             self::HTTP_METHOD_GET
         );
     }
@@ -803,7 +803,7 @@ class LINEAPI
     public function linkRichMenuToUser($userId, $richMenuId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/user/${urlencode($userId)}/richmenu/${urlencode($richMenuId)}",
+            "self::API_HOST/v2/bot/user/$userId/richmenu/$richMenuId",
             self::HTTP_METHOD_POST
         );
     }
@@ -820,7 +820,7 @@ class LINEAPI
     public function unlinkRichMenuFromUser($userId, $richMenuId)
     {
         return $this->requestFactory(
-            "${self::API_HOST}/v2/bot/user/${urlencode($userId)}/richmenu/${urlencode($richMenuId)}",
+            "self::API_HOST/v2/bot/user/$userId/richmenu/$richMenuId",
             self::HTTP_METHOD_DELETE
         );
     }
@@ -837,7 +837,7 @@ class LINEAPI
      */
     public function uploadRichMenuImage($richMenuId, $path)
     {
-        $ch = curl_init("${self::API_DATA_HOST}/v2/bot/richmenu/${urlencode($richMenuId)}/content");
+        $ch = curl_init("self::API_DATA_HOST/v2/bot/richmenu/$richMenuId/content");
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, array(
             "file_input" => $path,
@@ -856,7 +856,7 @@ class LINEAPI
     public function getRichMenuImage($richMenuId)
     {
         return $this->requestFactory(
-            "${self::API_DATA_HOST}/v2/bot/richmenu/${urlencode($richMenuId)}/content",
+            "self::API_DATA_HOST/v2/bot/richmenu/$richMenuId/content",
             self::HTTP_METHOD_GET,
             $decode = false
         );
