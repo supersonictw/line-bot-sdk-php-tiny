@@ -88,7 +88,7 @@ class LINEAPI
     private $channelSecret = null;
 
     /**
-     * The constant is used for `requestFactory` to set the HTTP Method while transporting.
+     * The URIs is the host of LINE API Platform.
      *
      * @var integer API_HOST
      * @var integer API_DATA_HOST
@@ -97,7 +97,7 @@ class LINEAPI
     public const API_DATA_HOST = "https://api-data.line.me";
 
     /**
-     * The constant is used for `requestFactory` to set the HTTP Method while transporting.
+     * The constants is used for `requestFactory` to set the HTTP Method while transporting.
      *
      * @var integer HTTP_METHOD_GET
      * @var integer HTTP_METHOD_POST
@@ -209,7 +209,7 @@ class LINEAPI
     }
 
     /**
-     * Get number of followers
+     * Get number of followers.
      * https://developers.line.biz/en/reference/messaging-api/#get-number-of-followers
      *
      * @param string $date
@@ -225,7 +225,7 @@ class LINEAPI
     }
 
     /**
-     * Get friend demographics
+     * Get friend demographics.
      * https://developers.line.biz/en/reference/messaging-api/#get-follower-ids
      *
      * @return object
@@ -239,7 +239,7 @@ class LINEAPI
     }
 
     /**
-     * Get user interaction statistics
+     * Get user interaction statistics.
      * https://developers.line.biz/en/reference/messaging-api/#get-follower-ids
      *
      * @param string $requestId
@@ -919,7 +919,7 @@ class LINEAPI
     }
 
     /**
-     * Signing data via SHA-256
+     * Signing data via SHA-256.
      *
      * @param mixed $body
      *

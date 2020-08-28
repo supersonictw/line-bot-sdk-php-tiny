@@ -15,7 +15,7 @@ This is a third party SDK for LINE Messaging API that extended more functions fr
 
 As <https://github.com/line/line-bot-sdk-php/issues/163> said, the original version which is created by [LINE Corporation](https://linecorp.com) has no plan to update, so that I created this one.
 
-There is only an `api.php` file for you to include it into your LINE Messaging BOT as easy for someone who don't need the full API if he only wants to make a "Simple" BOT.
+There is only an `api.php` file for you to include it into your LINE Messaging BOT as easy for someone who don't need the full API if the one only wants to make a "Simple" BOT.
 
 If you want the official LINE Messaging API for `PHP 7.x`, go to [line-bot-sdk-php](https://github.com/line/line-bot-sdk-php) for getting the full version.
 
