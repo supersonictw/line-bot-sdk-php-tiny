@@ -159,9 +159,11 @@ class LINEAPI
      * Revoke channel access token.
      * https://developers.line.biz/en/reference/messaging-api/#revoke-channel-access-token
      *
+     * @param string $channelAccessToken Specify a channel access token you hope to revoke. (optional)
+     *
      * @return boolean If it success, will return `true`.
      */
-    public function revokeChannelAccessToken()
+    public function revokeChannelAccessToken($channelAccessToken = "")
     {
         $header = array(
             "Content-Type: application/x-www-form-urlencoded",
@@ -169,7 +171,7 @@ class LINEAPI
 
         $content = http_build_query(
             array(
-                "access_token" => $this->channelAccessToken,
+                "access_token" => $channelAccessToken ?: $this->channelAccessToken,
             )
         );
 
@@ -288,14 +290,13 @@ class LINEAPI
      * Get the user ID of all users who added your LINE Official Accout as a friend.
      * https://developers.line.biz/en/reference/messaging-api/#get-follower-ids
      *
-     * @param string $groupId
      * @param string $continuationToken (optional)
      *
      * @return object
      */
-    public function getFollowersIds($groupId, $continuationToken = null)
+    public function getFollowersIds($continuationToken = "")
     {
-        $next = $continuationToken != null ? "?start=$continuationToken" : "";
+        $next = $continuationToken ? "?start=$continuationToken" : "";
         return $this->requestFactory(
             self::API_HOST . "/v2/bot/followers/ids$next",
             self::HTTP_METHOD_GET
@@ -360,9 +361,9 @@ class LINEAPI
      *
      * @return object
      */
-    public function getGroupMemberIds($groupId, $continuationToken = null)
+    public function getGroupMemberIds($groupId, $continuationToken = "")
     {
-        $next = $continuationToken != null ? "?start=$continuationToken" : "";
+        $next = $continuationToken ? "?start=$continuationToken" : "";
         return $this->requestFactory(
             self::API_HOST . "/v2/bot/group/$groupId/members/ids$next",
             self::HTTP_METHOD_GET
@@ -427,9 +428,9 @@ class LINEAPI
      *
      * @return object
      */
-    public function getRoomMemberIds($roomId, $continuationToken = null)
+    public function getRoomMemberIds($roomId, $continuationToken = "")
     {
-        $next = $continuationToken != null ? "?start=$continuationToken" : "";
+        $next = $continuationToken ? "?start=$continuationToken" : "";
         return $this->requestFactory(
             self::API_HOST . "/v2/bot/room/$roomId/members/ids$next",
             self::HTTP_METHOD_GET
@@ -446,7 +447,6 @@ class LINEAPI
      */
     public function leaveRoom($roomId)
     {
-        $next = $continuationToken != null ? "?start=$continuationToken" : "";
         return $this->requestFactory(
             self::API_HOST . "/v2/bot/room/$roomId/leave",
             self::HTTP_METHOD_POST
@@ -555,7 +555,7 @@ class LINEAPI
      *
      * @return object
      */
-    public function broadcast($targetIds, $message, $notificationDisabled = false)
+    public function broadcast($message, $notificationDisabled = false)
     {
         if (array_key_exists("type", $message)) {
             $messages = array($message);
@@ -581,7 +581,7 @@ class LINEAPI
      *
      * @return object
      */
-    public function getSendMessagesQuota($audienceGroupId)
+    public function getSendMessagesQuota()
     {
         return $this->requestFactory(
             self::API_HOST . "/v2/bot/message/quota",
@@ -595,7 +595,7 @@ class LINEAPI
      *
      * @return object
      */
-    public function getAllMessagesSentCount($audienceGroupId)
+    public function getAllMessagesSentCount()
     {
         return $this->requestFactory(
             self::API_HOST . "/v2/bot/message/quota/consumption",
@@ -609,7 +609,7 @@ class LINEAPI
      *
      * @return object
      */
-    public function getReplyMessagesSentCount($audienceGroupId)
+    public function getReplyMessagesSentCount()
     {
         return $this->requestFactory(
             self::API_HOST . "/v2/bot/message/delivery/reply",
@@ -623,7 +623,7 @@ class LINEAPI
      *
      * @return object
      */
-    public function getPushMessagesSentCount($audienceGroupId)
+    public function getPushMessagesSentCount()
     {
         return $this->requestFactory(
             self::API_HOST . "/v2/bot/message/delivery/push",
@@ -637,7 +637,7 @@ class LINEAPI
      *
      * @return object
      */
-    public function getMulticastMessagesSentCount($audienceGroupId)
+    public function getMulticastMessagesSentCount()
     {
         return $this->requestFactory(
             self::API_HOST . "/v2/bot/message/delivery/multicast",
@@ -651,7 +651,7 @@ class LINEAPI
      *
      * @return object
      */
-    public function getBroadcastMessagesSentCount($audienceGroupId)
+    public function getBroadcastMessagesSentCount()
     {
         return $this->requestFactory(
             self::API_HOST . "/v2/bot/message/delivery/broadcast",
