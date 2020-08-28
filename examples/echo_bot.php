@@ -16,20 +16,20 @@
  * under the License.
  */
 
-require_once('../api.php');
+require_once '../api.php';
 
 $channelAccessToken = '<your channel access token>';
 $channelSecret = '<your channel secret>';
 
 $client = new LINEAPI($channelAccessToken, $channelSecret);
-$msgobj = new LINEMSG();
+
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
                 case 'text':
-                    $client->replyMessage($event['replyToken'], $msgobj->Text($message['text']));
+                    $client->replyMessage($event['replyToken'], LINEMSG::Text($message['text']));
                     break;
                 default:
                     error_log("Unsupporeted message type: " . $message['type']);
@@ -40,4 +40,4 @@ foreach ($client->parseEvents() as $event) {
             error_log("Unsupporeted event type: " . $event['type']);
             break;
     }
-};
+}
