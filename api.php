@@ -93,8 +93,8 @@ class LINEAPI
      * @var integer API_HOST
      * @var integer API_DATA_HOST
      */
-    public const API_HOST = "https://api.line.me";
-    public const API_DATA_HOST = "https://api-data.line.me";
+    const API_HOST = "https://api.line.me";
+    const API_DATA_HOST = "https://api-data.line.me";
 
     /**
      * The constants is used for `requestFactory` to set the HTTP Method while transporting.
@@ -103,9 +103,9 @@ class LINEAPI
      * @var integer HTTP_METHOD_POST
      * @var integer HTTP_METHOD_DELETE
      */
-    private const HTTP_METHOD_GET = 0;
-    private const HTTP_METHOD_POST = 1;
-    private const HTTP_METHOD_DELETE = 2;
+    const HTTP_METHOD_GET = 0;
+    const HTTP_METHOD_POST = 1;
+    const HTTP_METHOD_DELETE = 2;
 
     public function __construct($channelAccessToken, $channelSecret)
     {
