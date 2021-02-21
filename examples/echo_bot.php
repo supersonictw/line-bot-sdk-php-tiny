@@ -32,12 +32,12 @@ foreach ($client->parseEvents() as $event) {
                     $client->replyMessage($event['replyToken'], LINEMSG::Text($message['text']));
                     break;
                 default:
-                    error_log("Unsupporeted message type: " . $message['type']);
+                    error_log("Unsupported message type: " . $message['type']);
                     break;
             }
             break;
         default:
-            error_log("Unsupporeted event type: " . $event['type']);
+            error_log("Unsupported event type: " . $event['type']);
             break;
     }
 }
