@@ -688,7 +688,8 @@ class LINEAPI
         return $this->requestFactory(
             self::API_DATA_HOST . "/v2/bot/message/$messageId/content",
             self::HTTP_METHOD_GET,
-            $decode = false
+            [],
+            false
         );
     }
 
@@ -858,7 +859,8 @@ class LINEAPI
         return $this->requestFactory(
             self::API_DATA_HOST . "/v2/bot/richmenu/$richMenuId/content",
             self::HTTP_METHOD_GET,
-            $decode = false
+            array(),
+            false
         );
     }
 
@@ -980,13 +982,14 @@ class LINEAPI
 
             default:
                 error_log("Unknown request method: " . $method);
-                return;
+                return null;
         }
 
         $response = file_get_contents($targetUri, false, $context);
         if (strpos($http_response_header[0], "200") === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
+            return null;
         } else {
             return !$decode ? $response : json_decode($response, $this->responseDecodeAsArray);
         }
@@ -1005,8 +1008,7 @@ class LINEMSG
      * Quick reply
      * https://developers.line.biz/en/reference/messaging-api/#quick-reply
      *
-     * @param array $action
-     *
+     * @param $actions
      * @return array
      */
     public static function QuickReply($actions)
@@ -1250,6 +1252,16 @@ class LINEMSG
  */
 class LINEMSG_QuickReply
 {
+    /**
+     * @var array
+     */
+    private $actions;
+
+    /**
+     * @var array
+     */
+    private $object;
+
     public function __construct()
     {
         $this->object = array(
@@ -1263,7 +1275,7 @@ class LINEMSG_QuickReply
         if (gettype($action) == "array") {
             $this->object["action"] = $action;
         } else {
-            push_array($this->object["action"], $action);
+            array_push($this->object["action"], $action);
         }
     }
 
@@ -1362,24 +1374,22 @@ class LINEMSG_Imagemap
         } else {
             return null;
         }
-        $object = array(
+        return array(
             "type" => $type,
             "label" => $label,
             $dataType => $url_or_text,
             "area" => $area,
         );
-        return $object;
     }
 
     public function actionArea($x, $y, $width, $height)
     {
-        $object = array(
+        return array(
             "x" => $x,
             "y" => $y,
             "width" => $width,
             "height" => $height,
         );
-        return $object;
     }
 }
 
@@ -1389,6 +1399,16 @@ class LINEMSG_Imagemap
  */
 class LINEMSG_Template
 {
+    /**
+     * @var array
+     */
+    private $actions;
+
+    /**
+     * @var array
+     */
+    private $object;
+
     public function __construct($template)
     {
         switch ($template) {
@@ -1529,6 +1549,11 @@ class LINEMSG_Template
  */
 class LINEMSG_FlexContainer
 {
+    /**
+     * @var array
+     */
+    private $object;
+
     public function __construct($container)
     {
         switch ($container) {
