@@ -681,14 +681,14 @@ class LINEAPI
      *
      * @param string $messageId
      *
-     * @return binary
+     * @return string
      */
     public function getMessageObject($messageId)
     {
         return $this->requestFactory(
             self::API_DATA_HOST . "/v2/bot/message/$messageId/content",
             self::HTTP_METHOD_GET,
-            [],
+            array(),
             false
         );
     }
@@ -930,8 +930,7 @@ class LINEAPI
     private function sign($body)
     {
         $hash = hash_hmac("sha256", $body, $this->channelSecret, true);
-        $signature = base64_encode($hash);
-        return $signature;
+        return base64_encode($hash);
     }
 
     /**
