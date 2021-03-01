@@ -66,6 +66,7 @@ if (!function_exists("hash_equals")) {
 
 /**
  * LINEAPI (Messaging API)
+ *
  * This is the Messaging API for creating LINE Chat BOTs.
  *
  * @link https://developers.line.biz/en/reference/messaging-api
@@ -832,6 +833,7 @@ class LINEAPI
     }
 
     # I think it is not a good way to upload any file with "file_get_contents"
+
     /**
      * Upload rich menu image. (libcURL used)
      * @link https://developers.line.biz/en/reference/messaging-api/#upload-rich-menu-image.
@@ -1002,6 +1004,7 @@ class LINEAPI
 
 /**
  * LINEMSG
+ *
  * @link https://developers.line.biz/en/reference/messaging-api/#message-objects
  *
  * This is the wrapper for creating a message object.
@@ -1252,6 +1255,7 @@ class LINEMSG
 
 /**
  * LINEMSG_QuickReply
+ *
  * @link https://developers.line.biz/en/reference/messaging-api/#items-object
  */
 class LINEMSG_QuickReply
@@ -1365,6 +1369,7 @@ class LINEMSG_QuickReply
 
 /**
  * LINEMSG_Imagemap
+ *
  * @link https://developers.line.biz/en/reference/messaging-api/#imagemap-action-objects
  */
 class LINEMSG_Imagemap
@@ -1399,6 +1404,7 @@ class LINEMSG_Imagemap
 
 /**
  * LINEMSG_Template
+ *
  * @link https://developers.line.biz/en/reference/messaging-api/#common-properties-of-template-message-objects
  */
 class LINEMSG_Template
@@ -1549,6 +1555,7 @@ class LINEMSG_Template
 
 /**
  * LINEMSG_FlexContainer
+ *
  * @link https://developers.line.biz/en/reference/messaging-api/#container
  */
 class LINEMSG_FlexContainer
