@@ -681,7 +681,7 @@ class LINEAPI
      *
      * @param string $messageId
      *
-     * @return string
+     * @return string|null
      */
     public function getMessageObject($messageId)
     {
