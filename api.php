@@ -82,7 +82,7 @@ class LINEAPI
 
     /**
      * The value is set for authorizing while the API connecting LINE API Platform.
-     * If you don't have the Authorized Tokens, following the guide of the URL to generate one pair.
+     * If you don't have the Authorized Tokens, following the guide of the URL to generate one.
      *
      * @link https://developers.line.biz/en/docs/messaging-api/getting-started/
      * @link https://developers.line.biz/en/docs/messaging-api/building-bot/#issue-a-channel-access-token
@@ -92,7 +92,7 @@ class LINEAPI
     private $channelAccessToken;
 
     /**
-     * The value is set for verifying signatures that whether the requests were sent from the LINE Platform.
+     * The value is set for verifying signatures that whether the requests were sent from the LINE API Platform.
      *
      * @link https://developers.line.biz/en/docs/messaging-api/getting-started/
      * @link https://developers.line.biz/en/docs/messaging-api/receiving-messages/
@@ -102,14 +102,14 @@ class LINEAPI
     private $channelSecret;
 
     /**
-     * The URIs is the host of LINE API Platform.
+     * The host is used for connecting the primary service of LINE API Platform.
      *
      * @var string API_HOST
      */
     const API_HOST = "https://api.line.me";
 
     /**
-     * The URIs is the host of LINE API Platform.
+     * The host is used for uploading/downloading objects from LINE API Platform.
      *
      * @var string API_HOST
      */

@@ -238,12 +238,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\LINEAPI\u003A\u003AAPI_HOST",
             "name": "API_HOST",
-            "summary": "The\u0020URIs\u0020is\u0020the\u0020host\u0020of\u0020LINE\u0020API\u0020Platform.",
+            "summary": "The\u0020host\u0020is\u0020used\u0020for\u0020connecting\u0020the\u0020primary\u0020service\u0020of\u0020LINE\u0020API\u0020Platform.",
             "url": "classes/LINEAPI.html#constant_API_HOST"
         },                {
             "fqsen": "\\LINEAPI\u003A\u003AAPI_DATA_HOST",
             "name": "API_DATA_HOST",
-            "summary": "The\u0020URIs\u0020is\u0020the\u0020host\u0020of\u0020LINE\u0020API\u0020Platform.",
+            "summary": "The\u0020host\u0020is\u0020used\u0020for\u0020uploading\/downloading\u0020objects\u0020from\u0020LINE\u0020API\u0020Platform.",
             "url": "classes/LINEAPI.html#constant_API_DATA_HOST"
         },                {
             "fqsen": "\\LINEAPI\u003A\u003AHTTP_METHOD_GET",
@@ -273,7 +273,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\LINEAPI\u003A\u003A\u0024channelSecret",
             "name": "channelSecret",
-            "summary": "The\u0020value\u0020is\u0020set\u0020for\u0020verifying\u0020signatures\u0020that\u0020whether\u0020the\u0020requests\u0020were\u0020sent\u0020from\u0020the\u0020LINE\u0020Platform.",
+            "summary": "The\u0020value\u0020is\u0020set\u0020for\u0020verifying\u0020signatures\u0020that\u0020whether\u0020the\u0020requests\u0020were\u0020sent\u0020from\u0020the\u0020LINE\u0020API\u0020Platform.",
             "url": "classes/LINEAPI.html#property_channelSecret"
         },                {
             "fqsen": "\\LINEMSG",
