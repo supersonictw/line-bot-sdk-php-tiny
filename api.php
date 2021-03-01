@@ -7,7 +7,8 @@
  * This is the third party edition by SuperSonic from [line-bot-sdk-tiny](https://git.io/JUUXz)
  *
  * @version 2.4.2
- * @link https://git.io/Jfvrg
+ * @link https://git.io/Jfvrg GitHub Repository
+ * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @copyright (c) 2021 SuperSonic (https://github.com/supersonictw)
  */
 
