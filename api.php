@@ -1005,9 +1005,9 @@ class LINEAPI
 /**
  * LINEMSG
  *
- * @link https://developers.line.biz/en/reference/messaging-api/#message-objects
- *
  * This is the wrapper for creating a message object.
+ *
+ * @link https://developers.line.biz/en/reference/messaging-api/#message-objects
  */
 class LINEMSG
 {
@@ -1251,10 +1251,10 @@ class LINEMSG
     }
 }
 
-// The classes below is used for creating the object of events with the class `LINEMSG`.
-
 /**
  * LINEMSG_QuickReply
+ *
+ * The class is used for creating the object of events with the class `LINEMSG`.
  *
  * @link https://developers.line.biz/en/reference/messaging-api/#items-object
  */
@@ -1370,6 +1370,8 @@ class LINEMSG_QuickReply
 /**
  * LINEMSG_Imagemap
  *
+ * The class is used for creating the object of events with the class `LINEMSG`.
+ *
  * @link https://developers.line.biz/en/reference/messaging-api/#imagemap-action-objects
  */
 class LINEMSG_Imagemap
@@ -1404,6 +1406,8 @@ class LINEMSG_Imagemap
 
 /**
  * LINEMSG_Template
+ *
+ * The class is used for creating the object of events with the class `LINEMSG`.
  *
  * @link https://developers.line.biz/en/reference/messaging-api/#common-properties-of-template-message-objects
  */
@@ -1555,6 +1559,8 @@ class LINEMSG_Template
 
 /**
  * LINEMSG_FlexContainer
+ *
+ * The class is used for creating the object of events with the class `LINEMSG`.
  *
  * @link https://developers.line.biz/en/reference/messaging-api/#container
  */
