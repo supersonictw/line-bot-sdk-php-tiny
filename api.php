@@ -21,12 +21,12 @@
  *
  * Copyright (c) 2015 Indigo Development Team
  * Released under the MIT license
- * https://git.io/Jfvro
+ * @link https://git.io/Jfvro
  */
 
 /*
  * Third Party Update by SuperSonic v2.4
- * https://git.io/Jfvrg
+ * @link https://git.io/Jfvrg
  *
  * (c) 2020 SuperSonic (https://github.com/supersonictw)
  */
@@ -61,7 +61,7 @@ if (!function_exists("hash_equals")) {
 
 /**
  * LINEAPI (Messaging API)
- * https://developers.line.biz/en/reference/messaging-api/
+ * @link https://developers.line.biz/en/reference/messaging-api/
  *
  * This is the Messaging API for creating LINE Chat BOTs.
  */
@@ -75,11 +75,11 @@ class LINEAPI
     public $responseDecodeAsArray = false;
 
     /**
-     * The value is setted for authorize while the API connecting LINE API Platform.
-     * https://developers.line.biz/en/docs/messaging-api/getting-started/
-     *
+     * The value is set for authorize while the API connecting LINE API Platform.
      * If you don't have the Authorized Tokens, following the guide of the URL to generate one pair.
-     * https://developers.line.biz/en/docs/messaging-api/building-bot/#issue-a-channel-access-token
+     *
+     * @link https://developers.line.biz/en/docs/messaging-api/getting-started/
+     * @link https://developers.line.biz/en/docs/messaging-api/building-bot/#issue-a-channel-access-token
      *
      * @var boolean $channelAccessToken
      * @var boolean $channelSecret
@@ -115,7 +115,7 @@ class LINEAPI
 
     /**
      * Issue channel access token.
-     * https://developers.line.biz/en/reference/messaging-api/#issue-channel-access-token
+     * @link https://developers.line.biz/en/reference/messaging-api/#issue-channel-access-token
      *
      * @param string $channelId
      * @param string $channelSecret
@@ -157,7 +157,7 @@ class LINEAPI
 
     /**
      * Revoke channel access token.
-     * https://developers.line.biz/en/reference/messaging-api/#revoke-channel-access-token
+     * @link https://developers.line.biz/en/reference/messaging-api/#revoke-channel-access-token
      *
      * @param string $channelAccessToken Specify a channel access token you hope to revoke. (optional)
      *
@@ -194,7 +194,7 @@ class LINEAPI
 
     /**
      * Get number of message deliveries.
-     * https://developers.line.biz/en/reference/messaging-api/#get-number-of-delivery-messages
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-number-of-delivery-messages
      *
      * @param string $date
      *
@@ -210,7 +210,7 @@ class LINEAPI
 
     /**
      * Get number of followers.
-     * https://developers.line.biz/en/reference/messaging-api/#get-number-of-followers
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-number-of-followers
      *
      * @param string $date
      *
@@ -226,7 +226,7 @@ class LINEAPI
 
     /**
      * Get friend demographics.
-     * https://developers.line.biz/en/reference/messaging-api/#get-follower-ids
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-follower-ids
      *
      * @return object
      */
@@ -240,7 +240,7 @@ class LINEAPI
 
     /**
      * Get user interaction statistics.
-     * https://developers.line.biz/en/reference/messaging-api/#get-follower-ids
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-follower-ids
      *
      * @param string $requestId
      *
@@ -256,7 +256,7 @@ class LINEAPI
 
     /**
      * Issue link token.
-     * https://developers.line.biz/en/reference/messaging-api/#issue-link-token
+     * @link https://developers.line.biz/en/reference/messaging-api/#issue-link-token
      *
      * @param string $userId
      *
@@ -272,7 +272,7 @@ class LINEAPI
 
     /**
      * Get profile.
-     * https://developers.line.biz/en/reference/messaging-api/#get-profile
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-profile
      *
      * @param string $userId
      *
@@ -288,7 +288,7 @@ class LINEAPI
 
     /**
      * Get the user ID of all users who added your LINE Official Accout as a friend.
-     * https://developers.line.biz/en/reference/messaging-api/#get-follower-ids
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-follower-ids
      *
      * @param string $continuationToken (optional)
      *
@@ -305,7 +305,7 @@ class LINEAPI
 
     /**
      * Get group summary.
-     * https://developers.line.biz/en/reference/messaging-api/#get-group-summary
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-group-summary
      *
      * @param string $groupId
      *
@@ -321,7 +321,7 @@ class LINEAPI
 
     /**
      * Get number of users in a group.
-     * https://developers.line.biz/en/reference/messaging-api/#get-members-group-count
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-members-group-count
      *
      * @param string $groupId
      *
@@ -337,7 +337,7 @@ class LINEAPI
 
     /**
      * Get group member profile.
-     * https://developers.line.biz/en/reference/messaging-api/#get-group-member-profile
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-group-member-profile
      *
      * @param string $groupId
      * @param string $userId
@@ -354,7 +354,7 @@ class LINEAPI
 
     /**
      * Get group member user IDs.
-     * https://developers.line.biz/en/reference/messaging-api/#get-group-member-user-ids
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-group-member-user-ids
      *
      * @param string $groupId
      * @param string $continuationToken (optional)
@@ -372,7 +372,7 @@ class LINEAPI
 
     /**
      * Leave group.
-     * https://developers.line.biz/en/reference/messaging-api/#leave-group
+     * @link https://developers.line.biz/en/reference/messaging-api/#leave-group
      *
      * @param string $groupId
      *
@@ -388,7 +388,7 @@ class LINEAPI
 
     /**
      * Get number of users in a room.
-     * https://developers.line.biz/en/reference/messaging-api/#get-members-room-count
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-members-room-count
      *
      * @param string $roomId
      *
@@ -404,7 +404,7 @@ class LINEAPI
 
     /**
      * Get room member user IDs.
-     * https://developers.line.biz/en/reference/messaging-api/#get-room-member-profile
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-room-member-profile
      *
      * @param string $roomId
      * @param string $userId
@@ -421,7 +421,7 @@ class LINEAPI
 
     /**
      * Get room member profile.
-     * https://developers.line.biz/en/reference/messaging-api/#get-room-member-user-ids
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-room-member-user-ids
      *
      * @param string $roomId
      * @param string $continuationToken (optional)
@@ -439,7 +439,7 @@ class LINEAPI
 
     /**
      * Leave room.
-     * https://developers.line.biz/en/reference/messaging-api/#leave-room
+     * @link https://developers.line.biz/en/reference/messaging-api/#leave-room
      *
      * @param string $roomId
      *
@@ -455,7 +455,7 @@ class LINEAPI
 
     /**
      * Send reply message.
-     * https://developers.line.biz/en/reference/messaging-api/#send-reply-message
+     * @link https://developers.line.biz/en/reference/messaging-api/#send-reply-message
      *
      * @param string $replyToken
      * @param array $message
@@ -486,7 +486,7 @@ class LINEAPI
 
     /**
      * Send push message.
-     * https://developers.line.biz/en/reference/messaging-api/#send-push-message
+     * @link https://developers.line.biz/en/reference/messaging-api/#send-push-message
      *
      * @param string $targetId
      * @param array $message
@@ -517,7 +517,7 @@ class LINEAPI
 
     /**
      * Send multicast message.
-     * https://developers.line.biz/en/reference/messaging-api/#send-multicast-message
+     * @link https://developers.line.biz/en/reference/messaging-api/#send-multicast-message
      *
      * @param array $targetIds
      * @param array $message
@@ -548,7 +548,7 @@ class LINEAPI
 
     /**
      * Send broadcast message.
-     * https://developers.line.biz/en/reference/messaging-api/#send-broadcast-message
+     * @link https://developers.line.biz/en/reference/messaging-api/#send-broadcast-message
      *
      * @param array $message
      * @param boolean $notificationDisabled (optional)
@@ -577,7 +577,7 @@ class LINEAPI
 
     /**
      * Get the target limit for additional messages.
-     * https://developers.line.biz/en/reference/messaging-api/#get-quota
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-quota
      *
      * @return object
      */
@@ -591,7 +591,7 @@ class LINEAPI
 
     /**
      * Get number of messages sent this month.
-     * https://developers.line.biz/en/reference/messaging-api/#get-consumption
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-consumption
      *
      * @return object
      */
@@ -605,7 +605,7 @@ class LINEAPI
 
     /**
      * Get number of sent reply messages.
-     * https://developers.line.biz/en/reference/messaging-api/#get-number-of-reply-messages
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-number-of-reply-messages
      *
      * @return object
      */
@@ -619,7 +619,7 @@ class LINEAPI
 
     /**
      * Get number of sent push messages.
-     * https://developers.line.biz/en/reference/messaging-api/#get-number-of-push-messages
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-number-of-push-messages
      *
      * @return object
      */
@@ -633,7 +633,7 @@ class LINEAPI
 
     /**
      * Get number of sent multicast messages.
-     * https://developers.line.biz/en/reference/messaging-api/#get-number-of-multicast-messages
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-number-of-multicast-messages
      *
      * @return object
      */
@@ -647,7 +647,7 @@ class LINEAPI
 
     /**
      * Get number of sent broadcast messages.
-     * https://developers.line.biz/en/reference/messaging-api/#get-number-of-broadcast-messages
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-number-of-broadcast-messages
      *
      * @return object
      */
@@ -661,7 +661,7 @@ class LINEAPI
 
     /**
      * Confirming that an audience is ready to accept messages.
-     * https://developers.line.biz/en/docs/messaging-api/sending-messages/#get-audience-status
+     * @link https://developers.line.biz/en/docs/messaging-api/sending-messages/#get-audience-status
      *
      * @param string $audienceGroupId
      *
@@ -676,8 +676,8 @@ class LINEAPI
     }
 
     /**
-     * Get content.
-     * https://developers.line.biz/en/reference/messaging-api/#get-content
+     * Download content of the message. (Get the raw data only)
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-content
      *
      * @param string $messageId
      *
@@ -715,7 +715,7 @@ class LINEAPI
 
     /**
      * Get rich menu list.
-     * https://developers.line.biz/en/reference/messaging-api/#get-rich-menu-list
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-rich-menu-list
      *
      * @return object
      */
@@ -729,7 +729,7 @@ class LINEAPI
 
     /**
      * Get rich menu.
-     * https://developers.line.biz/en/reference/messaging-api/#get-rich-menu
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-rich-menu
      *
      * @param string $richMenuId
      *
@@ -745,7 +745,7 @@ class LINEAPI
 
     /**
      * Create rich menu.
-     * https://developers.line.biz/en/reference/messaging-api/#create-rich-menu
+     * @link https://developers.line.biz/en/reference/messaging-api/#create-rich-menu
      *
      * @param string $content
      *
@@ -762,7 +762,7 @@ class LINEAPI
 
     /**
      * Delete rich menu.
-     * https://developers.line.biz/en/reference/messaging-api/#delete-rich-menu
+     * @link https://developers.line.biz/en/reference/messaging-api/#delete-rich-menu
      *
      * @param string $richMenuId
      *
@@ -778,7 +778,7 @@ class LINEAPI
 
     /**
      * Get rich menu ID of user.
-     * https://developers.line.biz/en/reference/messaging-api/#get-rich-menu-id-of-user
+     * @link https://developers.line.biz/en/reference/messaging-api/#get-rich-menu-id-of-user
      *
      * @param string $userId
      *
@@ -794,7 +794,7 @@ class LINEAPI
 
     /**
      * Link rich menu to user.
-     * https://developers.line.biz/en/reference/messaging-api/#link-rich-menu-to-user
+     * @link https://developers.line.biz/en/reference/messaging-api/#link-rich-menu-to-user
      *
      * @param string $userId
      * @param string $richMenuId
@@ -811,7 +811,7 @@ class LINEAPI
 
     /**
      * Unlink rich menu from user.
-     * https://developers.line.biz/en/reference/messaging-api/#unlink-rich-menu-from-user
+     * @link https://developers.line.biz/en/reference/messaging-api/#unlink-rich-menu-from-user
      *
      * @param string $userId
      * @param string $richMenuId
@@ -829,7 +829,7 @@ class LINEAPI
     # I think it is not a good way to upload any file with "file_get_contents"
     /**
      * Upload rich menu image. (libcURL used)
-     * https://developers.line.biz/en/reference/messaging-api/#upload-rich-menu-image.
+     * @link https://developers.line.biz/en/reference/messaging-api/#upload-rich-menu-image.
      *
      * @param string $richMenuId
      * @param string $path
@@ -847,12 +847,12 @@ class LINEAPI
     }
 
     /**
-     * Download rich menu image. (Get the binary only)
-     * https://developers.line.biz/en/reference/messaging-api/#download-rich-menu-image
+     * Download rich menu image. (Get the raw data only)
+     * @link https://developers.line.biz/en/reference/messaging-api/#download-rich-menu-image
      *
      * @param string $richMenuId
      *
-     * @return binary
+     * @return string|null
      */
     public function getRichMenuImage($richMenuId)
     {
@@ -997,7 +997,7 @@ class LINEAPI
 
 /**
  * LINEMSG
- * https://developers.line.biz/en/reference/messaging-api/#message-objects
+ * @link https://developers.line.biz/en/reference/messaging-api/#message-objects
  *
  * This is the wrapper for creating a message object.
  */
@@ -1005,7 +1005,7 @@ class LINEMSG
 {
     /**
      * Quick reply
-     * https://developers.line.biz/en/reference/messaging-api/#quick-reply
+     * @link https://developers.line.biz/en/reference/messaging-api/#quick-reply
      *
      * @param $actions
      * @return array
@@ -1019,7 +1019,7 @@ class LINEMSG
 
     /**
      * Text message
-     * https://developers.line.biz/en/reference/messaging-api/#text-message
+     * @link https://developers.line.biz/en/reference/messaging-api/#text-message
      *
      * @param string $msgText
      *
@@ -1035,7 +1035,7 @@ class LINEMSG
 
     /**
      * Sticker message
-     * https://developers.line.biz/en/reference/messaging-api/#sticker-message
+     * @link https://developers.line.biz/en/reference/messaging-api/#sticker-message
      *
      * @param string $packageId
      * @param string $stickerId
@@ -1053,7 +1053,7 @@ class LINEMSG
 
     /**
      * Image message
-     * https://developers.line.biz/en/reference/messaging-api/#image-message
+     * @link https://developers.line.biz/en/reference/messaging-api/#image-message
      *
      * @param string $url
      * @param string $previewUrl (optional)
@@ -1077,7 +1077,7 @@ class LINEMSG
 
     /**
      * Video message
-     * https://developers.line.biz/en/reference/messaging-api/#video-message
+     * @link https://developers.line.biz/en/reference/messaging-api/#video-message
      *
      * @param string $url
      * @param string $previewUrl
@@ -1095,7 +1095,7 @@ class LINEMSG
 
     /**
      * Audio message
-     * https://developers.line.biz/en/reference/messaging-api/#audio-message
+     * @link https://developers.line.biz/en/reference/messaging-api/#audio-message
      *
      * @param string $url
      * @param integer $second (optional)
@@ -1119,7 +1119,7 @@ class LINEMSG
 
     /**
      * Location message
-     * https://developers.line.biz/en/reference/messaging-api/#location-message
+     * @link https://developers.line.biz/en/reference/messaging-api/#location-message
      *
      * @param string $title
      * @param string $address
@@ -1141,7 +1141,7 @@ class LINEMSG
 
     /**
      * Imagemap message
-     * https://developers.line.biz/en/reference/messaging-api/#imagemap-message
+     * @link https://developers.line.biz/en/reference/messaging-api/#imagemap-message
      *
      * @param string $baseUrl
      * @param string $altText
@@ -1176,7 +1176,7 @@ class LINEMSG
 
     /**
      * Template messages
-     * https://developers.line.biz/en/reference/messaging-api/#template-messages
+     * @link https://developers.line.biz/en/reference/messaging-api/#template-messages
      *
      * @param string $altText
      * @param array $template
@@ -1199,7 +1199,7 @@ class LINEMSG
 
     /**
      * Flex Message
-     * https://developers.line.biz/en/reference/messaging-api/#flex-message
+     * @link https://developers.line.biz/en/reference/messaging-api/#flex-message
      *
      * @param string $altText
      * @param array $contents
@@ -1222,7 +1222,7 @@ class LINEMSG
 
     /**
      * Change icon and display name
-     * https://developers.line.biz/en/docs/messaging-api/icon-nickname-switch/
+     * @link https://developers.line.biz/en/docs/messaging-api/icon-nickname-switch/
      *
      * The function will help you assign the message object with icon and display name changing.
      *
@@ -1247,7 +1247,7 @@ class LINEMSG
 
 /**
  * LINEMSG_QuickReply
- * https://developers.line.biz/en/reference/messaging-api/#items-object
+ * @link https://developers.line.biz/en/reference/messaging-api/#items-object
  */
 class LINEMSG_QuickReply
 {
@@ -1360,7 +1360,7 @@ class LINEMSG_QuickReply
 
 /**
  * LINEMSG_Imagemap
- * https://developers.line.biz/en/reference/messaging-api/#imagemap-action-objects
+ * @link https://developers.line.biz/en/reference/messaging-api/#imagemap-action-objects
  */
 class LINEMSG_Imagemap
 {
@@ -1394,7 +1394,7 @@ class LINEMSG_Imagemap
 
 /**
  * LINEMSG_Template
- * https://developers.line.biz/en/reference/messaging-api/#common-properties-of-template-message-objects
+ * @link https://developers.line.biz/en/reference/messaging-api/#common-properties-of-template-message-objects
  */
 class LINEMSG_Template
 {
@@ -1544,7 +1544,7 @@ class LINEMSG_Template
 
 /**
  * LINEMSG_FlexContainer
- * https://developers.line.biz/en/reference/messaging-api/#container
+ * @link https://developers.line.biz/en/reference/messaging-api/#container
  */
 class LINEMSG_FlexContainer
 {

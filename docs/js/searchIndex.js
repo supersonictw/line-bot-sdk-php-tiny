@@ -8,7 +8,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\LINEAPI",
             "name": "LINEAPI",
-            "summary": "LINEAPI\u0020\u0028Messaging\u0020API\u0029\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/",
+            "summary": "LINEAPI\u0020\u0028Messaging\u0020API\u0029",
             "url": "classes/LINEAPI.html"
         },                {
             "fqsen": "\\LINEAPI\u003A\u003A__construct\u0028\u0029",
@@ -163,7 +163,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\LINEAPI\u003A\u003AgetMessageObject\u0028\u0029",
             "name": "getMessageObject",
-            "summary": "Get\u0020content.",
+            "summary": "Download\u0020content\u0020of\u0020the\u0020message.\u0020\u0028Get\u0020the\u0020raw\u0020data\u0020only\u0029",
             "url": "classes/LINEAPI.html#method_getMessageObject"
         },                {
             "fqsen": "\\LINEAPI\u003A\u003AdownloadMessageObject\u0028\u0029",
@@ -208,12 +208,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\LINEAPI\u003A\u003AuploadRichMenuImage\u0028\u0029",
             "name": "uploadRichMenuImage",
-            "summary": "Upload\u0020rich\u0020menu\u0020image.\u0020\u0028libcURL\u0020used\u0029\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023upload\u002Drich\u002Dmenu\u002Dimage.",
+            "summary": "Upload\u0020rich\u0020menu\u0020image.\u0020\u0028libcURL\u0020used\u0029",
             "url": "classes/LINEAPI.html#method_uploadRichMenuImage"
         },                {
             "fqsen": "\\LINEAPI\u003A\u003AgetRichMenuImage\u0028\u0029",
             "name": "getRichMenuImage",
-            "summary": "Download\u0020rich\u0020menu\u0020image.\u0020\u0028Get\u0020the\u0020binary\u0020only\u0029\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023download\u002Drich\u002Dmenu\u002Dimage",
+            "summary": "Download\u0020rich\u0020menu\u0020image.\u0020\u0028Get\u0020the\u0020raw\u0020data\u0020only\u0029",
             "url": "classes/LINEAPI.html#method_getRichMenuImage"
         },                {
             "fqsen": "\\LINEAPI\u003A\u003AdownloadRichMenuImage\u0028\u0029",
@@ -268,7 +268,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\LINEAPI\u003A\u003A\u0024channelAccessToken",
             "name": "channelAccessToken",
-            "summary": "The\u0020value\u0020is\u0020setted\u0020for\u0020authorize\u0020while\u0020the\u0020API\u0020connecting\u0020LINE\u0020API\u0020Platform.",
+            "summary": "The\u0020value\u0020is\u0020set\u0020for\u0020authorize\u0020while\u0020the\u0020API\u0020connecting\u0020LINE\u0020API\u0020Platform.",
             "url": "classes/LINEAPI.html#property_channelAccessToken"
         },                {
             "fqsen": "\\LINEAPI\u003A\u003A\u0024channelSecret",
@@ -278,67 +278,67 @@ Search.appendIndex(
         },                {
             "fqsen": "\\LINEMSG",
             "name": "LINEMSG",
-            "summary": "LINEMSG\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023message\u002Dobjects",
+            "summary": "LINEMSG",
             "url": "classes/LINEMSG.html"
         },                {
             "fqsen": "\\LINEMSG\u003A\u003AQuickReply\u0028\u0029",
             "name": "QuickReply",
-            "summary": "Quick\u0020reply\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023quick\u002Dreply",
+            "summary": "Quick\u0020reply",
             "url": "classes/LINEMSG.html#method_QuickReply"
         },                {
             "fqsen": "\\LINEMSG\u003A\u003AText\u0028\u0029",
             "name": "Text",
-            "summary": "Text\u0020message\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023text\u002Dmessage",
+            "summary": "Text\u0020message",
             "url": "classes/LINEMSG.html#method_Text"
         },                {
             "fqsen": "\\LINEMSG\u003A\u003ASticker\u0028\u0029",
             "name": "Sticker",
-            "summary": "Sticker\u0020message\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023sticker\u002Dmessage",
+            "summary": "Sticker\u0020message",
             "url": "classes/LINEMSG.html#method_Sticker"
         },                {
             "fqsen": "\\LINEMSG\u003A\u003AImage\u0028\u0029",
             "name": "Image",
-            "summary": "Image\u0020message\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023image\u002Dmessage",
+            "summary": "Image\u0020message",
             "url": "classes/LINEMSG.html#method_Image"
         },                {
             "fqsen": "\\LINEMSG\u003A\u003AVideo\u0028\u0029",
             "name": "Video",
-            "summary": "Video\u0020message\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023video\u002Dmessage",
+            "summary": "Video\u0020message",
             "url": "classes/LINEMSG.html#method_Video"
         },                {
             "fqsen": "\\LINEMSG\u003A\u003AAudio\u0028\u0029",
             "name": "Audio",
-            "summary": "Audio\u0020message\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023audio\u002Dmessage",
+            "summary": "Audio\u0020message",
             "url": "classes/LINEMSG.html#method_Audio"
         },                {
             "fqsen": "\\LINEMSG\u003A\u003ALocation\u0028\u0029",
             "name": "Location",
-            "summary": "Location\u0020message\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023location\u002Dmessage",
+            "summary": "Location\u0020message",
             "url": "classes/LINEMSG.html#method_Location"
         },                {
             "fqsen": "\\LINEMSG\u003A\u003AImagemap\u0028\u0029",
             "name": "Imagemap",
-            "summary": "Imagemap\u0020message\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023imagemap\u002Dmessage",
+            "summary": "Imagemap\u0020message",
             "url": "classes/LINEMSG.html#method_Imagemap"
         },                {
             "fqsen": "\\LINEMSG\u003A\u003ATemplate\u0028\u0029",
             "name": "Template",
-            "summary": "Template\u0020messages\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023template\u002Dmessages",
+            "summary": "Template\u0020messages",
             "url": "classes/LINEMSG.html#method_Template"
         },                {
             "fqsen": "\\LINEMSG\u003A\u003AFlex\u0028\u0029",
             "name": "Flex",
-            "summary": "Flex\u0020Message\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023flex\u002Dmessage",
+            "summary": "Flex\u0020Message",
             "url": "classes/LINEMSG.html#method_Flex"
         },                {
             "fqsen": "\\LINEMSG\u003A\u003AchangeAppearance\u0028\u0029",
             "name": "changeAppearance",
-            "summary": "Change\u0020icon\u0020and\u0020display\u0020name\nhttps\u003A\/\/developers.line.biz\/en\/docs\/messaging\u002Dapi\/icon\u002Dnickname\u002Dswitch\/",
+            "summary": "Change\u0020icon\u0020and\u0020display\u0020name",
             "url": "classes/LINEMSG.html#method_changeAppearance"
         },                {
             "fqsen": "\\LINEMSG_QuickReply",
             "name": "LINEMSG_QuickReply",
-            "summary": "LINEMSG_QuickReply\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023items\u002Dobject",
+            "summary": "LINEMSG_QuickReply",
             "url": "classes/LINEMSG-QuickReply.html"
         },                {
             "fqsen": "\\LINEMSG_QuickReply\u003A\u003A__construct\u0028\u0029",
@@ -378,7 +378,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\LINEMSG_Imagemap",
             "name": "LINEMSG_Imagemap",
-            "summary": "LINEMSG_Imagemap\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023imagemap\u002Daction\u002Dobjects",
+            "summary": "LINEMSG_Imagemap",
             "url": "classes/LINEMSG-Imagemap.html"
         },                {
             "fqsen": "\\LINEMSG_Imagemap\u003A\u003Aaction\u0028\u0029",
@@ -393,7 +393,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\LINEMSG_Template",
             "name": "LINEMSG_Template",
-            "summary": "LINEMSG_Template\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023common\u002Dproperties\u002Dof\u002Dtemplate\u002Dmessage\u002Dobjects",
+            "summary": "LINEMSG_Template",
             "url": "classes/LINEMSG-Template.html"
         },                {
             "fqsen": "\\LINEMSG_Template\u003A\u003A__construct\u0028\u0029",
@@ -433,7 +433,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\LINEMSG_FlexContainer",
             "name": "LINEMSG_FlexContainer",
-            "summary": "LINEMSG_FlexContainer\nhttps\u003A\/\/developers.line.biz\/en\/reference\/messaging\u002Dapi\/\u0023container",
+            "summary": "LINEMSG_FlexContainer",
             "url": "classes/LINEMSG-FlexContainer.html"
         },                {
             "fqsen": "\\LINEMSG_FlexContainer\u003A\u003A__construct\u0028\u0029",
