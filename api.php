@@ -1,4 +1,15 @@
 <?php
+/**
+ * line-bot-sdk-php-tiny
+ *
+ * > A simple SDK for the LINE Messaging API with PHP.
+ *
+ * This is the third party edition by SuperSonic from [line-bot-sdk-tiny](https://git.io/JUUXz)
+ *
+ * @version 2.4.2
+ * @link https://git.io/Jfvrg
+ * @copyright (c) 2021 SuperSonic (https://github.com/supersonictw)
+ */
 
 /**
  * Copyright 2016 LINE Corporation
@@ -22,13 +33,6 @@
  * Copyright (c) 2015 Indigo Development Team
  * Released under the MIT license
  * @link https://git.io/Jfvro
- */
-
-/*
- * Third Party Update by SuperSonic v2.4
- * @link https://git.io/Jfvrg
- *
- * (c) 2020 SuperSonic (https://github.com/supersonictw)
  */
 
 if (!function_exists("hash_equals")) {
@@ -61,9 +65,9 @@ if (!function_exists("hash_equals")) {
 
 /**
  * LINEAPI (Messaging API)
- * @link https://developers.line.biz/en/reference/messaging-api/
- *
  * This is the Messaging API for creating LINE Chat BOTs.
+ *
+ * @link https://developers.line.biz/en/reference/messaging-api
  */
 class LINEAPI
 {

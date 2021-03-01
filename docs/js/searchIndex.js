@@ -8,7 +8,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\LINEAPI",
             "name": "LINEAPI",
-            "summary": "LINEAPI\u0020\u0028Messaging\u0020API\u0029",
+            "summary": "LINEAPI\u0020\u0028Messaging\u0020API\u0029\nThis\u0020is\u0020the\u0020Messaging\u0020API\u0020for\u0020creating\u0020LINE\u0020Chat\u0020BOTs.",
             "url": "classes/LINEAPI.html"
         },                {
             "fqsen": "\\LINEAPI\u003A\u003A__construct\u0028\u0029",
