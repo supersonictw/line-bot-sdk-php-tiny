@@ -127,7 +127,7 @@
     <span>
         &nbsp;= &quot;https://api-data.line.me&quot;                    </span>
 </dt>
-<dd></dd>
+<dd>The URIs is the host of LINE API Platform.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/LINEAPI.html#constant_API_HOST">API_HOST</a>
@@ -141,21 +141,21 @@
     <span>
         &nbsp;= 2                    </span>
 </dt>
-<dd></dd>
+<dd>HTTP Delete Method</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/LINEAPI.html#constant_HTTP_METHOD_GET">HTTP_METHOD_GET</a>
     <span>
         &nbsp;= 0                    </span>
 </dt>
-<dd>The constants is used for `requestFactory` to set the HTTP Method while transporting.</dd>
+<dd>HTTP Get Method</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/LINEAPI.html#constant_HTTP_METHOD_POST">HTTP_METHOD_POST</a>
     <span>
         &nbsp;= 1                    </span>
 </dt>
-<dd></dd>
+<dd>HTTP Post Method</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/LINEAPI.html#property_responseDecodeAsArray">$responseDecodeAsArray</a>
@@ -167,16 +167,16 @@
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/LINEAPI.html#property_channelAccessToken">$channelAccessToken</a>
     <span>
-                &nbsp;: bool            </span>
+                &nbsp;: string            </span>
 </dt>
-<dd>The value is set for authorize while the API connecting LINE API Platform.</dd>
+<dd>The value is set for authorizing while the API connecting LINE API Platform.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/LINEAPI.html#property_channelSecret">$channelSecret</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: string            </span>
 </dt>
-<dd></dd>
+<dd>The value is set for verifying signatures that whether the requests were sent from the LINE Platform.</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/LINEAPI.html#method___construct">__construct()</a>
@@ -512,19 +512,21 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">103</span>
+    <span class="phpdocumentor-element-found-in__line">116</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">The URIs is the host of LINE API Platform.</p>
+
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">API_DATA_HOST</span>
     = <span class="phpdocumentor-signature__default-value">&quot;https://api-data.line.me&quot;</span>
 </code>
 
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -537,14 +539,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">102</span>
+    <span class="phpdocumentor-element-found-in__line">109</span>
 </aside>
 
         <p class="phpdocumentor-summary">The URIs is the host of LINE API Platform.</p>
 
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">API_HOST</span>
     = <span class="phpdocumentor-signature__default-value">&quot;https://api.line.me&quot;</span>
 </code>
@@ -564,19 +566,24 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">114</span>
+    <span class="phpdocumentor-element-found-in__line">143</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">HTTP Delete Method</p>
+
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">HTTP_METHOD_DELETE</span>
     = <span class="phpdocumentor-signature__default-value">2</span>
 </code>
 
 
-    
+        <section class="phpdocumentor-description"><blockquote>
+<p>The constant is used for <code class="prettyprint">requestFactory</code> to set the HTTP Method while transporting.</p>
+</blockquote>
+</section>
+
     
 
 </article>
@@ -589,10 +596,10 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">112</span>
+    <span class="phpdocumentor-element-found-in__line">125</span>
 </aside>
 
-        <p class="phpdocumentor-summary">The constants is used for `requestFactory` to set the HTTP Method while transporting.</p>
+        <p class="phpdocumentor-summary">HTTP Get Method</p>
 
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -602,7 +609,10 @@
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><blockquote>
+<p>The constant is used for <code class="prettyprint">requestFactory</code> to set the HTTP Method while transporting.</p>
+</blockquote>
+</section>
 
     
 
@@ -616,19 +626,24 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">113</span>
+    <span class="phpdocumentor-element-found-in__line">134</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">HTTP Post Method</p>
+
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">HTTP_METHOD_POST</span>
     = <span class="phpdocumentor-signature__default-value">1</span>
 </code>
 
 
-    
+        <section class="phpdocumentor-description"><blockquote>
+<p>The constant is used for <code class="prettyprint">requestFactory</code> to set the HTTP Method while transporting.</p>
+</blockquote>
+</section>
+
     
 
 </article>
@@ -688,17 +703,16 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">93</span>
+    <span class="phpdocumentor-element-found-in__line">92</span>
 </aside>
 
-        <p class="phpdocumentor-summary">The value is set for authorize while the API connecting LINE API Platform.</p>
+        <p class="phpdocumentor-summary">The value is set for authorizing while the API connecting LINE API Platform.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">bool</span>
+        <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$channelAccessToken</span>
-     = <span class="phpdocumentor-signature__default-value">
-ull</span></code>
+    </code>
 
         <section class="phpdocumentor-description"><p>If you don't have the Authorized Tokens, following the guide of the URL to generate one pair.</p>
 </section>
@@ -742,19 +756,40 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">94</span>
+    <span class="phpdocumentor-element-found-in__line">102</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">The value is set for verifying signatures that whether the requests were sent from the LINE Platform.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$channelSecret</span>
-     = <span class="phpdocumentor-signature__default-value">
-ull</span></code>
+    </code>
+
+        <section class="phpdocumentor-description"></section>
 
     
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">link</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                                        <a class="phpdocumentor-tag-link" href="https://developers.line.biz/en/docs/messaging-api/getting-started/"> https://developers.line.biz/en/docs/messaging-api/getting-started/ </a>
+                    
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">link</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                                        <a class="phpdocumentor-tag-link" href="https://developers.line.biz/en/docs/messaging-api/receiving-messages/"> https://developers.line.biz/en/docs/messaging-api/receiving-messages/ </a>
+                    
+                                    </dd>
+                        </dl>
 
 </article>
             </section>
@@ -777,7 +812,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">116</span>
+    <span class="phpdocumentor-element-found-in__line">145</span>
 </aside>
 
     
@@ -826,7 +861,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">564</span>
+    <span class="phpdocumentor-element-found-in__line">593</span>
 </aside>
 
         <p class="phpdocumentor-summary">Send broadcast message.</p>
@@ -893,7 +928,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">676</span>
+    <span class="phpdocumentor-element-found-in__line">705</span>
 </aside>
 
         <p class="phpdocumentor-summary">Confirming that an audience is ready to accept messages.</p>
@@ -951,7 +986,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">760</span>
+    <span class="phpdocumentor-element-found-in__line">789</span>
 </aside>
 
         <p class="phpdocumentor-summary">Create rich menu.</p>
@@ -1009,7 +1044,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">777</span>
+    <span class="phpdocumentor-element-found-in__line">806</span>
 </aside>
 
         <p class="phpdocumentor-summary">Delete rich menu.</p>
@@ -1067,7 +1102,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">710</span>
+    <span class="phpdocumentor-element-found-in__line">739</span>
 </aside>
 
         <p class="phpdocumentor-summary">Save file of the message from the function `getMessageObject`.</p>
@@ -1122,7 +1157,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">882</span>
+    <span class="phpdocumentor-element-found-in__line">911</span>
 </aside>
 
         <p class="phpdocumentor-summary">Save image of the rich menu from the function `getRichMenuImage`.</p>
@@ -1177,7 +1212,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">604</span>
+    <span class="phpdocumentor-element-found-in__line">633</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get number of messages sent this month.</p>
@@ -1224,7 +1259,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">660</span>
+    <span class="phpdocumentor-element-found-in__line">689</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get number of sent broadcast messages.</p>
@@ -1271,7 +1306,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">225</span>
+    <span class="phpdocumentor-element-found-in__line">254</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get number of followers.</p>
@@ -1329,7 +1364,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">303</span>
+    <span class="phpdocumentor-element-found-in__line">332</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get the user ID of all users who added your LINE Official Accout as a friend.</p>
@@ -1388,7 +1423,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">239</span>
+    <span class="phpdocumentor-element-found-in__line">268</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get friend demographics.</p>
@@ -1435,7 +1470,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">320</span>
+    <span class="phpdocumentor-element-found-in__line">349</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get group summary.</p>
@@ -1493,7 +1528,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">336</span>
+    <span class="phpdocumentor-element-found-in__line">365</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get number of users in a group.</p>
@@ -1551,7 +1586,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">370</span>
+    <span class="phpdocumentor-element-found-in__line">399</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get group member user IDs.</p>
@@ -1618,7 +1653,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">353</span>
+    <span class="phpdocumentor-element-found-in__line">382</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get group member profile.</p>
@@ -1684,7 +1719,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">209</span>
+    <span class="phpdocumentor-element-found-in__line">238</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get number of message deliveries.</p>
@@ -1742,7 +1777,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">692</span>
+    <span class="phpdocumentor-element-found-in__line">721</span>
 </aside>
 
         <p class="phpdocumentor-summary">Download content of the message. (Get the raw data only)</p>
@@ -1800,7 +1835,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">646</span>
+    <span class="phpdocumentor-element-found-in__line">675</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get number of sent multicast messages.</p>
@@ -1847,7 +1882,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">287</span>
+    <span class="phpdocumentor-element-found-in__line">316</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get profile.</p>
@@ -1905,7 +1940,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">632</span>
+    <span class="phpdocumentor-element-found-in__line">661</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get number of sent push messages.</p>
@@ -1952,7 +1987,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">618</span>
+    <span class="phpdocumentor-element-found-in__line">647</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get number of sent reply messages.</p>
@@ -1999,7 +2034,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">744</span>
+    <span class="phpdocumentor-element-found-in__line">773</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get rich menu.</p>
@@ -2057,7 +2092,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">793</span>
+    <span class="phpdocumentor-element-found-in__line">822</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get rich menu ID of user.</p>
@@ -2115,7 +2150,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">864</span>
+    <span class="phpdocumentor-element-found-in__line">893</span>
 </aside>
 
         <p class="phpdocumentor-summary">Download rich menu image. (Get the raw data only)</p>
@@ -2173,7 +2208,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">728</span>
+    <span class="phpdocumentor-element-found-in__line">757</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get rich menu list.</p>
@@ -2220,7 +2255,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">403</span>
+    <span class="phpdocumentor-element-found-in__line">432</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get number of users in a room.</p>
@@ -2278,7 +2313,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">437</span>
+    <span class="phpdocumentor-element-found-in__line">466</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get room member profile.</p>
@@ -2345,7 +2380,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">420</span>
+    <span class="phpdocumentor-element-found-in__line">449</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get room member user IDs.</p>
@@ -2411,7 +2446,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">590</span>
+    <span class="phpdocumentor-element-found-in__line">619</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get the target limit for additional messages.</p>
@@ -2458,7 +2493,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">255</span>
+    <span class="phpdocumentor-element-found-in__line">284</span>
 </aside>
 
         <p class="phpdocumentor-summary">Get user interaction statistics.</p>
@@ -2516,7 +2551,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">131</span>
+    <span class="phpdocumentor-element-found-in__line">160</span>
 </aside>
 
         <p class="phpdocumentor-summary">Issue channel access token.</p>
@@ -2582,7 +2617,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">271</span>
+    <span class="phpdocumentor-element-found-in__line">300</span>
 </aside>
 
         <p class="phpdocumentor-summary">Issue link token.</p>
@@ -2640,7 +2675,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">387</span>
+    <span class="phpdocumentor-element-found-in__line">416</span>
 </aside>
 
         <p class="phpdocumentor-summary">Leave group.</p>
@@ -2698,7 +2733,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">454</span>
+    <span class="phpdocumentor-element-found-in__line">483</span>
 </aside>
 
         <p class="phpdocumentor-summary">Leave room.</p>
@@ -2756,7 +2791,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">810</span>
+    <span class="phpdocumentor-element-found-in__line">839</span>
 </aside>
 
         <p class="phpdocumentor-summary">Link rich menu to user.</p>
@@ -2822,7 +2857,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">534</span>
+    <span class="phpdocumentor-element-found-in__line">563</span>
 </aside>
 
         <p class="phpdocumentor-summary">Send multicast message.</p>
@@ -2897,7 +2932,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">899</span>
+    <span class="phpdocumentor-element-found-in__line">928</span>
 </aside>
 
         <p class="phpdocumentor-summary">Verify the request which visits this API, if it&#039;s from LINE Webhook, parse the events.</p>
@@ -2931,7 +2966,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">503</span>
+    <span class="phpdocumentor-element-found-in__line">532</span>
 </aside>
 
         <p class="phpdocumentor-summary">Send push message.</p>
@@ -3006,7 +3041,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">472</span>
+    <span class="phpdocumentor-element-found-in__line">501</span>
 </aside>
 
         <p class="phpdocumentor-summary">Send reply message.</p>
@@ -3081,7 +3116,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">172</span>
+    <span class="phpdocumentor-element-found-in__line">201</span>
 </aside>
 
         <p class="phpdocumentor-summary">Revoke channel access token.</p>
@@ -3141,7 +3176,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">827</span>
+    <span class="phpdocumentor-element-found-in__line">856</span>
 </aside>
 
         <p class="phpdocumentor-summary">Unlink rich menu from user.</p>
@@ -3207,7 +3242,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">846</span>
+    <span class="phpdocumentor-element-found-in__line">875</span>
 </aside>
 
         <p class="phpdocumentor-summary">Upload rich menu image. (libcURL used)</p>
@@ -3273,7 +3308,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">953</span>
+    <span class="phpdocumentor-element-found-in__line">982</span>
 </aside>
 
         <p class="phpdocumentor-summary">Send request to LINE API Platform.</p>
@@ -3346,7 +3381,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="api.php"><a href="files/api.html"><abbr title="api.php">api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">937</span>
+    <span class="phpdocumentor-element-found-in__line">966</span>
 </aside>
 
         <p class="phpdocumentor-summary">Signing data via SHA-256.</p>

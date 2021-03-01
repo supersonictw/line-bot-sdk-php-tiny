@@ -243,22 +243,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\LINEAPI\u003A\u003AAPI_DATA_HOST",
             "name": "API_DATA_HOST",
-            "summary": "",
+            "summary": "The\u0020URIs\u0020is\u0020the\u0020host\u0020of\u0020LINE\u0020API\u0020Platform.",
             "url": "classes/LINEAPI.html#constant_API_DATA_HOST"
         },                {
             "fqsen": "\\LINEAPI\u003A\u003AHTTP_METHOD_GET",
             "name": "HTTP_METHOD_GET",
-            "summary": "The\u0020constants\u0020is\u0020used\u0020for\u0020\u0060requestFactory\u0060\u0020to\u0020set\u0020the\u0020HTTP\u0020Method\u0020while\u0020transporting.",
+            "summary": "HTTP\u0020Get\u0020Method",
             "url": "classes/LINEAPI.html#constant_HTTP_METHOD_GET"
         },                {
             "fqsen": "\\LINEAPI\u003A\u003AHTTP_METHOD_POST",
             "name": "HTTP_METHOD_POST",
-            "summary": "",
+            "summary": "HTTP\u0020Post\u0020Method",
             "url": "classes/LINEAPI.html#constant_HTTP_METHOD_POST"
         },                {
             "fqsen": "\\LINEAPI\u003A\u003AHTTP_METHOD_DELETE",
             "name": "HTTP_METHOD_DELETE",
-            "summary": "",
+            "summary": "HTTP\u0020Delete\u0020Method",
             "url": "classes/LINEAPI.html#constant_HTTP_METHOD_DELETE"
         },                {
             "fqsen": "\\LINEAPI\u003A\u003A\u0024responseDecodeAsArray",
@@ -268,12 +268,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\LINEAPI\u003A\u003A\u0024channelAccessToken",
             "name": "channelAccessToken",
-            "summary": "The\u0020value\u0020is\u0020set\u0020for\u0020authorize\u0020while\u0020the\u0020API\u0020connecting\u0020LINE\u0020API\u0020Platform.",
+            "summary": "The\u0020value\u0020is\u0020set\u0020for\u0020authorizing\u0020while\u0020the\u0020API\u0020connecting\u0020LINE\u0020API\u0020Platform.",
             "url": "classes/LINEAPI.html#property_channelAccessToken"
         },                {
             "fqsen": "\\LINEAPI\u003A\u003A\u0024channelSecret",
             "name": "channelSecret",
-            "summary": "",
+            "summary": "The\u0020value\u0020is\u0020set\u0020for\u0020verifying\u0020signatures\u0020that\u0020whether\u0020the\u0020requests\u0020were\u0020sent\u0020from\u0020the\u0020LINE\u0020Platform.",
             "url": "classes/LINEAPI.html#property_channelSecret"
         },                {
             "fqsen": "\\LINEMSG",

@@ -81,36 +81,65 @@ class LINEAPI
     public $responseDecodeAsArray = false;
 
     /**
-     * The value is set for authorize while the API connecting LINE API Platform.
+     * The value is set for authorizing while the API connecting LINE API Platform.
      * If you don't have the Authorized Tokens, following the guide of the URL to generate one pair.
      *
      * @link https://developers.line.biz/en/docs/messaging-api/getting-started/
      * @link https://developers.line.biz/en/docs/messaging-api/building-bot/#issue-a-channel-access-token
      *
-     * @var boolean $channelAccessToken
-     * @var boolean $channelSecret
+     * @var string $channelAccessToken
      */
-    private $channelAccessToken = null;
-    private $channelSecret = null;
+    private $channelAccessToken;
+
+    /**
+     * The value is set for verifying signatures that whether the requests were sent from the LINE Platform.
+     *
+     * @link https://developers.line.biz/en/docs/messaging-api/getting-started/
+     * @link https://developers.line.biz/en/docs/messaging-api/receiving-messages/
+     *
+     * @var string $channelSecret
+     */
+    private $channelSecret;
 
     /**
      * The URIs is the host of LINE API Platform.
      *
-     * @var integer API_HOST
-     * @var integer API_DATA_HOST
+     * @var string API_HOST
      */
     const API_HOST = "https://api.line.me";
+
+    /**
+     * The URIs is the host of LINE API Platform.
+     *
+     * @var string API_HOST
+     */
     const API_DATA_HOST = "https://api-data.line.me";
 
     /**
-     * The constants is used for `requestFactory` to set the HTTP Method while transporting.
+     * HTTP Get Method
+     *
+     * > The constant is used for `requestFactory` to set the HTTP Method while transporting.
      *
      * @var integer HTTP_METHOD_GET
-     * @var integer HTTP_METHOD_POST
-     * @var integer HTTP_METHOD_DELETE
      */
     const HTTP_METHOD_GET = 0;
+
+    /**
+     * HTTP Post Method
+     *
+     * > The constant is used for `requestFactory` to set the HTTP Method while transporting.
+     *
+     * @var integer HTTP_METHOD_POST
+     */
     const HTTP_METHOD_POST = 1;
+
+    /**
+     * HTTP Delete Method
+     *
+     * > The constant is used for `requestFactory` to set the HTTP Method while transporting.
+     *
+     * @var integer HTTP_METHOD_DELETE
+     */
     const HTTP_METHOD_DELETE = 2;
 
     public function __construct($channelAccessToken, $channelSecret)
