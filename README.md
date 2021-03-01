@@ -33,9 +33,9 @@ There are some solutions for resolving this problem:
 
 ## Example
 
-Try to read and learn from [examples](./examples/) for understanding how to create a BOT with this API.
+Try to read and learn from [examples](./examples) for understanding how to create a BOT with this API.
 
-Before running the examples, please make sure that you have setted the Channel access token and Channel secret of your BOT.
+Before running the examples, please make sure that you have set the Channel access token and Channel secret of your BOT.
 
 # API Reference
 
