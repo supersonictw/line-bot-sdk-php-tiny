@@ -5,7 +5,7 @@
 [![Version](https://img.shields.io/badge/version-2.4.1-00BBFF.svg)](https://git.io/Jfvrg)
 [![PHP](https://img.shields.io/badge/php->=5.4-B94FFF.svg)](https://php.net)
 
-[![LINE](https://lineofficial.blogimg.jp/tw/imgs/2/2/22f62401.png)](https://line.me)
+[![LINE](LINE.svg)](https://line.me)
 
 A simple SDK  for the LINE Messaging API with PHP.
 
