@@ -13,7 +13,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\LINEAPI\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "LINEAPI\u0020constructor.",
             "url": "classes/LINEAPI.html#method___construct"
         },                {
             "fqsen": "\\LINEAPI\u003A\u003AissueChannelAccessToken\u0028\u0029",
