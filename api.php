@@ -147,7 +147,7 @@ class LINEAPI
      *
      * This is the constructor of API, to initialize your certificates into it.
      * If you need to use issueChannelAccessToken, you can set both of them as null,
-     * issueChannelAccessToken will re-set up automatically.
+     * issueChannelAccessToken will setup the values automatically.
      *
      * @param $channelAccessToken
      * @param $channelSecret
