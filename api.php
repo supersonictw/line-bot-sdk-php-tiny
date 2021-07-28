@@ -87,7 +87,7 @@ class LINEAPI
      * @link https://developers.line.biz/en/docs/messaging-api/getting-started/
      * @link https://developers.line.biz/en/docs/messaging-api/building-bot/#issue-a-channel-access-token
      *
-     * @var string $channelAccessToken
+     * @var string|null $channelAccessToken
      */
     private $channelAccessToken;
 
@@ -97,7 +97,7 @@ class LINEAPI
      * @link https://developers.line.biz/en/docs/messaging-api/getting-started/
      * @link https://developers.line.biz/en/docs/messaging-api/receiving-messages/
      *
-     * @var string $channelSecret
+     * @var string|null $channelSecret
      */
     private $channelSecret;
 
@@ -142,6 +142,16 @@ class LINEAPI
      */
     const HTTP_METHOD_DELETE = 2;
 
+    /**
+     * LINEAPI constructor.
+     *
+     * This is the constructor of API, to initialize your certificates into it.
+     * If you need to use issueChannelAccessToken, you can set both of them as null,
+     * issueChannelAccessToken will re-set up automatically.
+     *
+     * @param $channelAccessToken
+     * @param $channelSecret
+     */
     public function __construct($channelAccessToken, $channelSecret)
     {
         $this->channelAccessToken = $channelAccessToken;
@@ -186,6 +196,7 @@ class LINEAPI
         } else {
             $data = json_decode($response);
             $this->channelAccessToken = $data->access_token;
+            $this->channelSecret = $channelSecret;
             return $data;
         }
     }
