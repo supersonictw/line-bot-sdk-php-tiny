@@ -41,7 +41,7 @@ Before running the examples, please make sure that you have set the Channel acce
 
 The documentation is generated automatically by [PHPDoc](https://phpdoc.org).
 
-[Visit the documentation](https://randychen.tk/line-bot-sdk-php-tiny/)
+[Visit the documentation](https://shiranui.xyz/line-bot-sdk-php-tiny/)
 
 ## Requirement
 
